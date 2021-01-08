@@ -141,12 +141,18 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setDateDepart(LocalDate date_depart) throws DateTimeException{
 		LocalDate date_now = LocalDate.now();
-		if(date_depart.isBefore(date_now) || date_depart.isEqual(date_now)) {
+		if(date_depart.isAfter(date_now) || date_depart.isEqual(date_now)){
+			if(date_arrivee == null) {
 			this.date_depart = date_depart;
-		}else {
-			throw new DateTimeException("La date de départ est impossible : " + date_now);
+
+			}
+			else
+				if(date_depart.isBefore(date_arrivee) || date_depart.isEqual(date_arrivee)) {
+					this.date_depart = date_depart;
+				}else {
+					throw new DateTimeException("La date de départ est impossible : " + date_now);
 		}
-		
+		}
 	}
 
 	/**

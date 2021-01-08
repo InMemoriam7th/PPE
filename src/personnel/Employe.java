@@ -117,6 +117,8 @@ public class Employe implements Serializable, Comparable<Employe>
 		LocalDate date_now = LocalDate.now();
 		if(date_arrivee.isAfter(date_now) || date_now.isEqual(date_now)) {
 			this.date_arrivee = date_arrivee;
+		}else {
+			System.out.println("Date d'arrivée invalide");
 		}
 		
 	}

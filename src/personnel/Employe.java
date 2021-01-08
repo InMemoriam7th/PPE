@@ -137,14 +137,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		return date_depart;
 		
 	}
-	
 
-	
-	public LocalDate getDateDepart(){
-		
-		return date_depart;
-		
-	}
 	
 	/**
 	 * Retourne vrai ssi le password passé en paramètre est bien celui

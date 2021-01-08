@@ -123,7 +123,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setDateArrivee(LocalDate date_arrivee) throws DateTimeException{
 		LocalDate date_now = LocalDate.now();
-		if(date_arrivee.isAfter(date_now) || date_now.isEqual(date_now)) {
+		if(date_arrivee.isAfter(date_now) || date_arrivee.isEqual(date_now)) {
 			this.date_arrivee = date_arrivee;
 		}else {
 			throw new DateTimeException("La date d'arrivÈe est impossible : " + date_now);
@@ -138,7 +138,15 @@ public class Employe implements Serializable, Comparable<Employe>
 		
 	}
 	
-
+	public void setDateDepart(LocalDate date_depart) throws DateTimeException{
+		LocalDate date_now = LocalDate.now();
+		if(date_depart.isBefore(date_now) || date_depart.isEqual(date_now)) {
+			this.date_depart = date_depart;
+		}else {
+			throw new DateTimeException("La date de dÈpart est impossible : " + date_now);
+		}
+		
+	}
 	/**
 	 * Retourne vrai ssi le password pass√© en param√®tre est bien celui
 	 * de l'employ√©.

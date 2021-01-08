@@ -137,6 +137,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		return date_depart;
 		
 	}
+<<<<<<< HEAD
 	
 	public void setDateDepart(LocalDate date_depart) throws DateTimeException{
 		LocalDate date_now = LocalDate.now();
@@ -147,6 +148,10 @@ public class Employe implements Serializable, Comparable<Employe>
 		}
 		
 	}
+=======
+
+	
+>>>>>>> branch 'main' of https://github.com/InMemoriam7th/PPE-Groupe-1.git
 	/**
 	 * Retourne vrai ssi le password passé en paramètre est bien celui
 	 * de l'employé.

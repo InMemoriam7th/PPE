@@ -23,4 +23,13 @@ public class testDate {
 		 employe.setDateArrivee(date_now);
 		 assertEquals("Test de la fonction DateArrivee", date_now , employe.getDateArrivee());
 	 }
+	 @Test
+	 public void testDateDepart() throws SauvegardeImpossible
+	 {
+		 Ligue ligue = gestionPersonnel.addLigue("Flechettes");
+		 Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", "azerty"); 
+		 LocalDate date_now = LocalDate.now();
+		 employe.setDateDepart(date_now);
+		 assertEquals("Test de la fonction DateDepart", date_now , employe.getDateDepart());
+	 }
 }

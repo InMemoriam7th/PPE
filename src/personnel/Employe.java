@@ -113,6 +113,13 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.mail = mail;
 	}
+
+	
+	public LocalDate getDateArriv�(){
+		
+		return date_arrivee;
+		
+	}
 	
 	public void setDateArrivee(LocalDate date_arrivee) throws DateTimeException{
 		LocalDate date_now = LocalDate.now();
@@ -131,6 +138,12 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * de l'employé.
 	 * @param password le password auquel comparer celui de l'employé.
 	 */
+	
+	public LocalDate getDateDepart(){
+		
+		return date_depart;
+		
+	}
 	
 	public boolean checkPassword(String password)
 	{

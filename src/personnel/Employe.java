@@ -1,6 +1,7 @@
 package personnel;
 
 import java.io.Serializable;
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 /**
@@ -120,12 +121,12 @@ public class Employe implements Serializable, Comparable<Employe>
 		
 	}
 	
-	public void setDateArrivee(LocalDate date_arrivee){
+	public void setDateArrivee(LocalDate date_arrivee) throws DateTimeException{
 		LocalDate date_now = LocalDate.now();
 		if(date_arrivee.isAfter(date_now) || date_now.isEqual(date_now)) {
 			this.date_arrivee = date_arrivee;
 		}else {
-			System.out.println("Date d'arrivée invalide");
+			throw new DateTimeException("La date d'arrivée est impossible : " + date_now);
 		}
 		
 	}

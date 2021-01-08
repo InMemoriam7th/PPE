@@ -115,7 +115,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 
 	
-	public LocalDate getDateArrivé(){
+	public LocalDate getDateArrivee(){
 		
 		return date_arrivee;
 		
@@ -130,6 +130,14 @@ public class Employe implements Serializable, Comparable<Employe>
 		}
 		
 	}
+	
+	
+	public LocalDate getDateDepart(){
+		
+		return date_depart;
+		
+	}
+	
 
 	
 	public LocalDate getDateDepart(){

@@ -114,7 +114,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 
 	
-	public LocalDate getDateArriv�(){
+	public LocalDate getDateArrivee(){
 		
 		return date_arrivee;
 		
@@ -129,6 +129,14 @@ public class Employe implements Serializable, Comparable<Employe>
 		}
 		
 	}
+	
+	
+	public LocalDate getDateDepart(){
+		
+		return date_depart;
+		
+	}
+	
 
 	/**
 	 * Retourne vrai ssi le password passé en paramètre est bien celui
@@ -137,12 +145,6 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * de l'employé.
 	 * @param password le password auquel comparer celui de l'employé.
 	 */
-	
-	public LocalDate getDateDepart(){
-		
-		return date_depart;
-		
-	}
 	
 	public boolean checkPassword(String password)
 	{

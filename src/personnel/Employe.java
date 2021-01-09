@@ -1,8 +1,9 @@
 package personnel;
 
 import java.io.Serializable;
-import java.time.DateTimeException;
 import java.time.LocalDate;
+
+import exception.DateException;
 
 /**
  * EmployÃ© d'une ligue hÃ©bergÃ©e par la M2L. Certains peuvent 
@@ -121,12 +122,12 @@ public class Employe implements Serializable, Comparable<Employe>
 		
 	}
 	
-	public void setDateArrivee(LocalDate date_arrivee) throws DateTimeException{
+	public void setDateArrivee(LocalDate date_arrivee) throws DateException{
 		LocalDate date_now = LocalDate.now();
 		if(date_arrivee.isAfter(date_now) || date_arrivee.isEqual(date_now)) {
 			this.date_arrivee = date_arrivee;
 		}else{
-			throw new DateTimeException("La date d'arrivée est impossible : " + date_arrivee);
+			throw new DateException("La date d'arrivée est impossible : " + date_arrivee);
 		}
 		
 	}
@@ -139,19 +140,21 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 
 	
-	public void setDateDepart(LocalDate date_depart) throws DateTimeException{
+	public void setDateDepart(LocalDate date_depart) throws DateException{
 		LocalDate date_now = LocalDate.now();
 		if(date_depart.isAfter(date_now) || date_depart.isEqual(date_now)){
-			if(date_arrivee == null) {
-			this.date_depart = date_depart;
-
+			if(this.date_arrivee == null) {
+				this.date_depart = date_depart;
 			}
-			else
-				if(date_depart.isBefore(date_arrivee) || date_depart.isEqual(date_arrivee)) {
+			else {
+				if(date_arrivee.isBefore(date_depart) || date_depart.isEqual(this.date_arrivee)) {
 					this.date_depart = date_depart;
 				}else {
-					throw new DateTimeException("La date de départ est impossible : " + date_now);
-		}
+					throw new DateException("La date de départ ne peut pas être avant la date d'arrivée");
+				}
+			}
+		}else {
+			throw new DateException("La date de départ est impossible : " + date_depart);	
 		}
 	}
 

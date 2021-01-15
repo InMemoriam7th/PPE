@@ -123,11 +123,23 @@ public class Employe implements Serializable, Comparable<Employe>
 	}
 	
 	public void setDateArrivee(LocalDate date_arrivee) throws DateException{
+		if(date_arrivee!=null) {
 		LocalDate date_now = LocalDate.now();
 		if(date_arrivee.isAfter(date_now) || date_arrivee.isEqual(date_now)) {
+			if(this.date_depart == null) {
 			this.date_arrivee = date_arrivee;
+			}else {
+				if(date_depart.isBefore(date_arrivee) || date_arrivee.isEqual(this.date_depart)) {
+					this.date_arrivee = date_arrivee;
+				}else {
+					throw new DateException("La date d' arrivee ne peut pas être avant la date de départ");
+				}
+			}
 		}else{
 			throw new DateException("La date d'arrivée est impossible : " + date_arrivee);
+		}
+		}else {
+			throw new DateException("La date d'arrivée est null");
 		}
 		
 	}
@@ -141,6 +153,7 @@ public class Employe implements Serializable, Comparable<Employe>
 
 	
 	public void setDateDepart(LocalDate date_depart) throws DateException{
+		if(date_depart!=null) {
 		LocalDate date_now = LocalDate.now();
 		if(date_depart.isAfter(date_now) || date_depart.isEqual(date_now)){
 			if(this.date_arrivee == null) {
@@ -155,6 +168,9 @@ public class Employe implements Serializable, Comparable<Employe>
 			}
 		}else {
 			throw new DateException("La date de départ est impossible : " + date_depart);	
+		}
+		}else {
+			throw new DateException("La date depart est null");
 		}
 	}
 

@@ -31,6 +31,22 @@ public class testDate {
 		 }catch (DateException e) {
 			 assertThat(e.getMessage(), is("La date d'arrivée est impossible : " + date_now.minusDays(10)));
 		}
+
+		 employe.setDateDepart(date_now.plusDays(20));
+		 
+		 try {
+		 employe.setDateArrivee(date_now);
+		 }catch (DateException e) {
+			 assertThat(e.getMessage(), is("La date d' arrivee ne peut pas être avant la date de départ"));
+		}
+		 
+		 try {
+		 employe.setDateArrivee(null);
+		 }catch (DateException e) {
+			 assertThat(e.getMessage(), is("La date d'arrivée est null"));
+		}
+		 
+		 
 	 }
 	 @Test
 	 public void testDateDepart() throws SauvegardeImpossible, DateException
@@ -54,6 +70,12 @@ public class testDate {
 			 employe.setDateDepart(date_now);
 		 }catch (DateException e) {
 			 assertThat(e.getMessage(), is("La date de départ ne peut pas être avant la date d'arrivée"));
+		}
+		 
+		 try {
+		 employe.setDateDepart(null);
+		 }catch (DateException e) {
+			 assertThat(e.getMessage(), is("La date depart est null"));
 		}
 	 }
 }

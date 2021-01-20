@@ -84,7 +84,7 @@ public class testEmploye {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
 		 employe.setNom("Bouchard");
-		 assertEquals("Test de la fonction set et get nom", "Cance", employe.getNom()); 
+		 assertEquals("Test de la fonction set et get nom", "Bouchard", employe.getNom()); 
 	 }
 	 @Test
 	 public void testPrenom() throws SauvegardeImpossible
@@ -92,7 +92,7 @@ public class testEmploye {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Raharison", "Kevin", "R.Kevin@gmail.com", "qwerty");
 		 employe.setPrenom("Alexandre");
-		 assertEquals("test de la fonction set et get prenom", "Kevin", employe.getPrenom());
+		 assertEquals("test de la fonction set et get prenom", "Alexandre", employe.getPrenom());
 	 }
 	 @Test
 	 public void testMail() throws SauvegardeImpossible
@@ -100,7 +100,7 @@ public class testEmploye {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
 		 employe.setMail("R.Kevin@gmail.com");
-		 assertEquals("Test de la fonction set et get mail", "c.alexandre@gmail.com", employe.getMail()); 
+		 assertEquals("Test de la fonction set et get mail", "R.Kevin@gmail.com", employe.getMail()); 
 	 }
 	 @Test
 	 public void testPassword() throws SauvegardeImpossible

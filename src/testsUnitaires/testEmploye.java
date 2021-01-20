@@ -12,7 +12,7 @@ import personnel.SauvegardeImpossible;
 
 import java.time.LocalDate;
 
-public class testDate {
+public class testEmploye {
 	
 	GestionPersonnel gestionPersonnel = GestionPersonnel.getGestionPersonnel();
 		

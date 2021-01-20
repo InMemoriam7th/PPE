@@ -83,7 +83,7 @@ public class testEmploye {
 	 {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
-		 employe.setNom("Cance");
+		 employe.setNom("Bouchard");
 		 assertEquals("Test de la fonction set et get nom", "Cance", employe.getNom()); 
 	 }
 	 @Test
@@ -91,7 +91,7 @@ public class testEmploye {
 	 {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Raharison", "Kevin", "R.Kevin@gmail.com", "qwerty");
-		 employe.setPrenom("Kevin");
+		 employe.setPrenom("Alexandre");
 		 assertEquals("test de la fonction set et get prenom", "Kevin", employe.getPrenom());
 	 }
 	 @Test
@@ -99,7 +99,7 @@ public class testEmploye {
 	 {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
-		 employe.setMail("c.alexandre@gmail.com");
+		 employe.setMail("R.Kevin@gmail.com");
 		 assertEquals("Test de la fonction set et get mail", "c.alexandre@gmail.com", employe.getMail()); 
 	 }
 	 @Test
@@ -107,7 +107,7 @@ public class testEmploye {
 	 {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
-		 employe.setPassword("qwerty");
+		 employe.setPassword("azerty");
 		 assertEquals("Test de la fonction set et check password", true, employe.checkPassword); 
 	 }
 	 @Test

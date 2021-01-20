@@ -94,5 +94,28 @@ public class testEmploye {
 		 employe.setPrenom("Kevin");
 		 assertEquals("test de la fonction set et get prenom", "Kevin", employe.getPrenom());
 	 }
-	 
+	 @Test
+	 public void testMail() throws SauvegardeImpossible
+	 {
+		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
+		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
+		 employe.setMail("c.alexandre@gmail.com");
+		 assertEquals("Test de la fonction set et get mail", "c.alexandre@gmail.com", employe.getMail()); 
+	 }
+	 @Test
+	 public void testPassword() throws SauvegardeImpossible
+	 {
+		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
+		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
+		 employe.setPassword("qwerty");
+		 assertEquals("Test de la fonction set et check password", true, employe.checkPassword); 
+	 }
+	 @Test
+     public void testAdministrateurligue() throws SauvegardeImpossible
+     {
+         Ligue ligue = gestionPersonnel.addLigue("Flechettes");
+         Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", "azerty"); 
+         ligue.setAdministrateur(employe);
+         assertEquals("Test de la fonction setAdministrateur et getAdministrateur", employe , ligue.getAdministrateur());
+     }
 }

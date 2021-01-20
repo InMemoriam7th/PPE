@@ -78,4 +78,21 @@ public class testEmploye {
 			 assertThat(e.getMessage(), is("La date depart est null"));
 		}
 	 }
+	 @Test
+	 public void testNom() throws SauvegardeImpossible
+	 {
+		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
+		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
+		 employe.setNom("Cance");
+		 assertEquals("Test de la fonction set et get nom", "Cance", employe.getNom()); 
+	 }
+	 @Test
+	 public void testPrenom() throws SauvegardeImpossible
+	 {
+		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
+		 Employe employe = ligue.addEmploye("Raharison", "Kevin", "R.Kevin@gmail.com", "qwerty");
+		 employe.setPrenom("Kevin");
+		 assertEquals("test de la fonction set et get prenom", "Kevin", employe.getPrenom());
+	 }
+	 
 }

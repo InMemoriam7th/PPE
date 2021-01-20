@@ -108,7 +108,7 @@ public class testEmploye {
 		 Ligue ligue = gestionPersonnel.addLigue("Jeux Vidéos");
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty");
 		 employe.setPassword("azerty");
-		 assertEquals("Test de la fonction set et check password", true, employe.checkPassword); 
+		 assertEquals("Test de la fonction set et check password", false, employe.checkPassword("azerty")); 
 	 }
 	 @Test
      public void testAdministrateurligue() throws SauvegardeImpossible

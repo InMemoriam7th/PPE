@@ -1,0 +1,18 @@
+CREATE DATABASE ppe;
+
+
+create table employes
+(
+id_employe int PRIMARY KEY,
+nom varchar(256) NOT NULL,
+prenom varchar(256) NOT NULL,
+datedepart DATETIME,
+datearrivee DATETIME,
+admin boolean
+);
+
+create table ligue
+(
+id_ligue int PRIMARY KEY,
+nom_ligue varchar(256) NOT NULL
+);

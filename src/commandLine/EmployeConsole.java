@@ -79,8 +79,18 @@ public class EmployeConsole
 	
 	private Option dateArrivee(final Employe employe)
 	{
-		return new Option("Changer la date d'arrivée", "w", () -> {employe.setPassword(getString("Nouveau password : "));});
-		//return new Option("Changer la date d'arrivée", "v", () -> {employe.setDateArrivee(getString("Date d'arrivée : "));});
+		return new Option("Changer la date d'arrivée", "w", () -> {
+			int day = Integer.parseInt(getString("Jour : "));
+			int month = Integer.parseInt(getString("Mois : "));
+			int year = Integer.parseInt(getString("Année : "));
+			LocalDate date = LocalDate.of(year, month, day);
+			try {
+				employe.setDateArrivee(date);
+			} catch (DateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+	    });
 	}
 	
 	private Option supprimerEmploye(final Employe employe)

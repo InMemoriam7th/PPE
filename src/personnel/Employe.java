@@ -29,7 +29,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
-		this.date_arrivee = .;
+		this.date_arrivee = null;
 		
 	}
 	
@@ -240,11 +240,8 @@ public class Employe implements Serializable, Comparable<Employe>
 	public String toString()
 	{
 		String res = nom + " " + prenom + " " + mail + " (";
-		if(this.date_arrivee == null)
-			
-		else;
-			
-		return;
+		if(this.date_arrivee != null)
+			res += date_arrivee;
 				
 		if (estRoot())
 			res += "super-utilisateur";

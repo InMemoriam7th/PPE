@@ -2,6 +2,7 @@ package commandLine;
 
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -67,12 +68,13 @@ public class EmployeConsole
 				int day = Integer.parseInt(getString("Jour : "));
 				int month = Integer.parseInt(getString("Mois : "));
 				int year = Integer.parseInt(getString("Année : "));
-				LocalDate date = LocalDate.of(year, month, day);
 				try {
+					LocalDate date = LocalDate.of(year, month, day);
 					employe.setDateDepart(date);
-				} catch (DateException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				}catch(DateTimeException e){
+					System.out.println(e);
+				}catch (DateException e) {
+					System.out.println(e);
 				}	
 		});
 	}
@@ -83,12 +85,13 @@ public class EmployeConsole
 			int day = Integer.parseInt(getString("Jour : "));
 			int month = Integer.parseInt(getString("Mois : "));
 			int year = Integer.parseInt(getString("Année : "));
-			LocalDate date = LocalDate.of(year, month, day);
 			try {
-				employe.setDateArrivee(date);
+			LocalDate date = LocalDate.of(year, month, day);
+			employe.setDateArrivee(date);
+			}catch (DateTimeException e){
+				System.out.println("Date impossible");
 			} catch (DateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println(e);
 			}	
 	    });
 	}

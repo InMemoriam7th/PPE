@@ -1,5 +1,10 @@
 CREATE DATABASE ppe;
 
+create table ligue
+(
+id_ligue int PRIMARY KEY,
+nom_ligue varchar(256) NOT NULL
+);
 
 create table employes
 (
@@ -11,10 +16,4 @@ datedepart DATETIME,
 datearrivee DATETIME,
 admin int NOT NULL,
 id_ligue int FOREIGN KEY
-);
-
-create table ligue
-(
-id_ligue int PRIMARY KEY,
-nom_ligue varchar(256) NOT NULL
 );

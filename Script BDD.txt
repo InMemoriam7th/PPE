@@ -6,9 +6,11 @@ create table employes
 id_employe int PRIMARY KEY,
 nom varchar(256) NOT NULL,
 prenom varchar(256) NOT NULL,
+mail varchar(256) NOT NULL,
 datedepart DATETIME,
 datearrivee DATETIME,
-admin boolean
+admin int NOT NULL,
+id_ligue int FOREIGN KEY
 );
 
 create table ligue

@@ -15,7 +15,7 @@ import java.util.TreeSet;
  * retourné.
  */
 
-public class GestionPersonnel implements Serializable
+public class GestionPersonnel implements Serializable 
 {
 	private static final long serialVersionUID = -105283113987886425L;
 	private static GestionPersonnel gestionPersonnel = null;
@@ -102,6 +102,11 @@ public class GestionPersonnel implements Serializable
 	int insert(Ligue ligue) throws SauvegardeImpossible
 	{
 		return passerelle.insert(ligue);
+	}
+	
+	int insert(Employe employe) throws SauvegardeImpossible
+	{
+		return passerelle.insert(employe);
 	}
 
 	/**

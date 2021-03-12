@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import commandLineMenus.examples.employees.core.Employee;
 import personnel.*;
 
 public class JDBC implements Passerelle 
@@ -85,6 +86,36 @@ public class JDBC implements Passerelle
 		{
 			exception.printStackTrace();
 			throw new SauvegardeImpossible(exception);
-		}		
+		}
+		
+	}
+	
+	@Override
+	public int insert(Employe employe) throws SauvegardeImpossible 
+	{
+		try 
+		{
+			PreparedStatement instruction;
+			instruction = connection.prepareStatement("insert into employes (nom, prenom, mail, admin, id_ligue) values(?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
+			instruction.setString(1, employe.getNom());
+			instruction.setString(2, employe.getPrenom());
+			instruction.setString(3, employe.getMail());
+			if (employe.estAdmin(employe.getLigue())) {
+				instruction.setInt(4, 1);
+			}else {
+				instruction.setInt(4, 0);
+			}
+			instruction.setInt(5, (employe.getLigue()).getid());
+			instruction.executeUpdate();
+			ResultSet id = instruction.getGeneratedKeys();
+			id.next();
+			return id.getInt(1);
+		} 
+		catch (SQLException exception) 
+		{
+			exception.printStackTrace();
+			throw new SauvegardeImpossible(exception);
+		}
+		
 	}
 }

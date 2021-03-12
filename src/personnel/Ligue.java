@@ -41,6 +41,12 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		administrateur = gestionPersonnel.getRoot();
 		this.id = id;
 	}
+	
+	
+	public int getid()
+	{
+		return id;
+	}
 
 	/**
 	 * Retourne le nom de la ligue.
@@ -108,7 +114,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @return l'employé créé. 
 	 */
 
-	public Employe addEmploye(String nom, String prenom, String mail, String password)
+	public Employe addEmploye(String nom, String prenom, String mail, String password) throws SauvegardeImpossible
 	{
 		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password);
 		employes.add(employe);

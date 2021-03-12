@@ -21,7 +21,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private GestionPersonnel gestionPersonnel;
 	private LocalDate date_depart, date_arrivee;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password) throws SauvegardeImpossible
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -31,6 +31,7 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.ligue = ligue;
 		this.date_arrivee = null;
 		this.date_depart = null;
+		gestionPersonnel.insert(this);
 		
 	}
 	

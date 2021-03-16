@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import commandLine.EmployeConsole;
 import commandLineMenus.examples.employees.core.Employee;
 import personnel.*;
 
@@ -32,9 +33,44 @@ public class JDBC implements Passerelle
 	}
 	
 	@Override
+	public void select_root(Employe root) throws SauvegardeImpossible {
+		try 
+		{
+			String requete_select = "select * from employes where admin = 2 ";
+			Statement instruction = connection.createStatement();
+			ResultSet root_sql = instruction.executeQuery(requete_select);
+			System.out.println(root_sql);
+			if(!root_sql.next()) {
+				PreparedStatement requete_insert  = connection.prepareStatement("insert into employes (nom, prenom, mail, password, admin) value (?, ?, ?, ?, ?)");
+				requete_insert.setString(1, root.getNom());
+				requete_insert.setString(2, root.getPrenom());
+				requete_insert.setString(3, root.getMail());
+				requete_insert.setString(4, root.getPassword());
+				requete_insert.setInt(5, 2);
+				requete_insert.executeUpdate();
+			}else {
+				root.setid(root_sql.getInt(1));
+				root.setNom(root_sql.getString(2));
+				root.setPrenom(root_sql.getString(3));
+				root.setMail(root_sql.getString(4));
+				root.setPassword(root_sql.getString(5));
+			}
+			
+			System.out.println(root_sql);
+			/*new Employe(ligues.getInt(1), ligues.getString(2));*/
+			
+		}
+		catch (SQLException e)
+		{
+			System.out.println(e);
+		}
+	}
+	
+	@Override
 	public GestionPersonnel getGestionPersonnel() 
 	{
 		GestionPersonnel gestionPersonnel = new GestionPersonnel();
+		
 		try 
 		{
 			String requete = "select * from ligue";

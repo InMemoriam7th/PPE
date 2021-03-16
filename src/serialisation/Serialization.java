@@ -57,4 +57,11 @@ public class Serialization implements personnel.Passerelle
 	{
 		return -1;
 	}
+
+	@Override
+	public void select_root(Employe root) throws SauvegardeImpossible {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

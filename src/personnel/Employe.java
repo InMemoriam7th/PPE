@@ -17,11 +17,12 @@ public class Employe implements Serializable, Comparable<Employe>
 {
 	private static final long serialVersionUID = 4795721718037994734L;
 	private String nom, prenom, password, mail;
+	private int id;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
 	private LocalDate date_depart, date_arrivee;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password) throws SauvegardeImpossible
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password)
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -31,9 +32,19 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.ligue = ligue;
 		this.date_arrivee = null;
 		this.date_depart = null;
-		gestionPersonnel.insert(this);
-		
 	}
+	
+	
+	public void setid(int id)
+	{
+		this.id = id;
+	}
+	
+	public int getid()
+	{
+		return id;
+	}
+	
 	
 	/**
 	 * Retourne vrai ssi l'employé est administrateur de la ligue 
@@ -198,9 +209,14 @@ public class Employe implements Serializable, Comparable<Employe>
 	
 	public void setPassword(String password)
 	{
-		this.password= password;
+		this.password = password;
 	}
 
+	public String getPassword()
+	{
+		return password;
+	}
+	
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
 	 * @return la ligue à laquelle l'employé est affecté.

@@ -48,6 +48,11 @@ public class GestionPersonnel implements Serializable
 			throw new RuntimeException("Vous ne pouvez créer qu'une seuls instance de cet objet.");
 		ligues = new TreeSet<>();
 		gestionPersonnel = this;
+		try {
+			passerelle.select_root(root);
+		} catch (SauvegardeImpossible e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void sauvegarder() throws SauvegardeImpossible

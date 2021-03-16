@@ -6,4 +6,5 @@ public interface Passerelle
 	public void sauvegarderGestionPersonnel(GestionPersonnel gestionPersonnel)  throws SauvegardeImpossible;
 	public int insert(Ligue ligue) throws SauvegardeImpossible;
 	public int insert(Employe ligue) throws SauvegardeImpossible;
+	public void select_root(Employe root) throws SauvegardeImpossible;
 }

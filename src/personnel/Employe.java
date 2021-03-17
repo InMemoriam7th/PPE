@@ -34,6 +34,19 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.date_depart = null;
 	}
 	
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate date_depart, LocalDate date_arrivee)
+	{
+		this.gestionPersonnel = gestionPersonnel;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+		this.mail = mail;
+		this.ligue = ligue;
+		this.date_depart = date_depart;
+		this.date_arrivee = date_arrivee;
+		
+	}
+	
 	
 	public void setid(int id)
 	{
@@ -88,6 +101,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setNom(String nom)
 	{
 		this.nom = nom;
+		this.update();
 	}
 
 	/**
@@ -108,6 +122,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setPrenom(String prenom)
 	{
 		this.prenom = prenom;
+		this.update();
 	}
 
 	/**
@@ -128,6 +143,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setMail(String mail)
 	{
 		this.mail = mail;
+		this.update();
 	}
 
 	
@@ -143,9 +159,11 @@ public class Employe implements Serializable, Comparable<Employe>
 		if(date_arrivee.isAfter(date_now) || date_arrivee.isEqual(date_now)) {
 			if(this.date_depart == null) {
 			this.date_arrivee = date_arrivee;
+			this.update();
 			}else {
 				if(date_depart.isBefore(date_arrivee) || date_arrivee.isEqual(this.date_depart)) {
 					this.date_arrivee = date_arrivee;
+					this.update();
 				}else {
 					throw new DateException("La date d' arrivee ne peut pas être avant la date de départ");
 				}
@@ -173,10 +191,12 @@ public class Employe implements Serializable, Comparable<Employe>
 		if(date_depart.isAfter(date_now) || date_depart.isEqual(date_now)){
 			if(this.date_arrivee == null) {
 				this.date_depart = date_depart;
+				this.update();
 			}
 			else {
 				if(date_arrivee.isBefore(date_depart) || date_depart.isEqual(this.date_arrivee)) {
 					this.date_depart = date_depart;
+					this.update();
 				}else {
 					throw new DateException("La date de départ ne peut pas être avant la date d'arrivée");
 				}
@@ -210,6 +230,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	public void setPassword(String password)
 	{
 		this.password = password;
+		this.update();
 	}
 
 	public String getPassword()
@@ -244,6 +265,17 @@ public class Employe implements Serializable, Comparable<Employe>
 		else
 			throw new ImpossibleDeSupprimerRoot();
 	}
+	
+	
+	private void update() {
+		try {
+			gestionPersonnel.update(this);
+		} catch (SauvegardeImpossible e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 
 	@Override
 	public int compareTo(Employe autre)

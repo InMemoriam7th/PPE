@@ -1,6 +1,7 @@
 package personnel;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -92,6 +93,13 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		if (administrateur != root && administrateur.getLigue() != this)
 			throw new DroitsInsuffisants();
 		this.administrateur = administrateur;
+		try {
+			gestionPersonnel.set_admin(administrateur);
+		} catch (SauvegardeImpossible e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -122,9 +130,9 @@ public class Ligue implements Serializable, Comparable<Ligue>
 		return employe;
 	}
 	
-	public Employe addEmploye(int id, String nom, String prenom, String mail, String password) throws SauvegardeImpossible
+	public Employe addEmploye(int id, String nom, String prenom, String mail, String password, LocalDate date_depart, LocalDate date_arrivee) throws SauvegardeImpossible
 	{
-		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password);
+		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, date_depart, date_arrivee);
 		employe.setid(id);
 		employes.add(employe);
 		return employe;
@@ -133,6 +141,12 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	void remove(Employe employe)
 	{
 		employes.remove(employe);
+		try {
+			gestionPersonnel.remove(employe);
+		} catch (SauvegardeImpossible e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -142,7 +156,12 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	
 	public void remove()
 	{
-		GestionPersonnel.getGestionPersonnel().remove(this);
+		try {
+			GestionPersonnel.getGestionPersonnel().remove(this);
+		} catch (SauvegardeImpossible e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 

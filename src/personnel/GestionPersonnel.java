@@ -98,11 +98,6 @@ public class GestionPersonnel implements Serializable
 		ligues.add(ligue);
 		return ligue;
 	}
-
-	void remove(Ligue ligue)
-	{
-		ligues.remove(ligue);
-	}
 	
 	int insert(Ligue ligue) throws SauvegardeImpossible
 	{
@@ -113,6 +108,30 @@ public class GestionPersonnel implements Serializable
 	{
 		return passerelle.insert(employe);
 	}
+	
+	void update(Employe employe) throws SauvegardeImpossible 
+	{
+			passerelle.update(employe);
+	}
+	
+	void set_admin(Employe employe) throws SauvegardeImpossible 
+	{
+			passerelle.set_admin(employe);
+	}
+	
+	void remove(Employe employe) throws SauvegardeImpossible 
+	{
+			passerelle.remove(employe);
+	}
+	
+	void remove(Ligue ligue) throws SauvegardeImpossible
+	{
+		passerelle.remove(ligue);
+		ligues.remove(ligue);
+		System.out.println("passe");
+		
+	}
+	
 
 	/**
 	 * Retourne le root (super-utilisateur).

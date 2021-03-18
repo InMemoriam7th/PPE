@@ -16,5 +16,6 @@ password varchar(256) NOT NULL,
 datedepart DATETIME,
 datearrivee DATETIME,
 admin int DEFAULT 0,
-id_ligue int REFERENCES ligue(id_ligue)
+id_ligue int,
+FOREIGN KEY ligue_employe(id_ligue) references ligue(id_ligue)
 );

@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.time.LocalDate;
 
 import commandLine.EmployeConsole;
+import commandLineMenus.Action;
 import commandLineMenus.examples.employees.core.Employee;
 import personnel.*;
 
@@ -57,9 +58,7 @@ public class JDBC implements Passerelle
 				root.setMail(root_sql.getString(4));
 				root.setPassword(root_sql.getString(5));
 			}
-			
-			System.out.println(root_sql);
-			/*new Employe(ligues.getInt(1), ligues.getString(2));*/
+		
 			
 		}
 		catch (SQLException e)
@@ -82,6 +81,7 @@ public class JDBC implements Passerelle
 			Statement instruction = connection.createStatement();
 			ResultSet ligues = instruction.executeQuery(requete);
 			while (ligues.next())
+				if(ligues != null) {
 			 	ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
 				PreparedStatement instruction_employe;
 				instruction_employe = connection.prepareStatement("select * from employes where id_ligue = ?");
@@ -101,7 +101,7 @@ public class JDBC implements Passerelle
 						ligue.setAdministrateur(employe);
 					}
 				}
-				
+				}
 				//ligue.addEmploye(id, nom, prenom, mail, password)
 		}
 		catch (SQLException e)
@@ -229,16 +229,12 @@ public class JDBC implements Passerelle
 		try {
 			if(employe.getLigue() != null) {
 			instruction1 = connection.prepareStatement("update employes set admin = 0 where admin = 1 and id_ligue = ?", Statement.RETURN_GENERATED_KEYS);
-			System.out.println(employe.getLigue().getNom());
-			System.out.println(employe.getid());
 			instruction1.setInt(1, employe.getLigue().getid());
 			instruction1.executeUpdate();
-			instruction1.close();
 			
 			instruction2 = connection.prepareStatement("update employes set admin = 1 where id_employe = ?", Statement.RETURN_GENERATED_KEYS);
 			instruction2.setInt(1, employe.getid());
 			instruction2.executeUpdate();
-			instruction2.close();
 			
 			}
 		} catch (SQLException exception) {
@@ -267,13 +263,15 @@ public class JDBC implements Passerelle
 		PreparedStatement instruction1;
 		PreparedStatement instruction2;
 		try {
+			instruction2 = connection.prepareStatement("delete from employes where id_ligue = ?", Statement.RETURN_GENERATED_KEYS);
+			instruction2.setInt(1, ligue.getid());
+			instruction2.executeUpdate();
+			
 			instruction1 = connection.prepareStatement("delete from ligue where id_ligue = ?", Statement.RETURN_GENERATED_KEYS);
 			instruction1.setInt(1, ligue.getid());
 			instruction1.executeUpdate();
 			
-			instruction2 = connection.prepareStatement("delete from employes where id_ligue = ?", Statement.RETURN_GENERATED_KEYS);
-			instruction2.setInt(1, ligue.getid());
-			instruction2.executeUpdate();
+
 			
 			
 		} catch (SQLException exception) {

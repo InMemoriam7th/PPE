@@ -67,14 +67,47 @@ public class JDBC implements Passerelle
 		}
 	}
 	
+	
+	public void select_ligue(Ligue ligue){
+		LocalDate depart = null;
+		LocalDate arrivee = null;
+		Employe employe = null;
+	
+		
+		try {
+			PreparedStatement instruction_employe;
+			instruction_employe = connection.prepareStatement("select * from employes where id_ligue = ?");
+			instruction_employe.setInt(1, ligue.getid());
+			ResultSet employe_sql = instruction_employe.executeQuery();
+			
+			while(employe_sql.next()) {
+				if(employe_sql.getDate(6) != null) {
+					depart = (employe_sql.getDate(6)).toLocalDate();
+				}
+				if(employe_sql.getDate(7) != null) {
+					arrivee = (employe_sql.getDate(7)).toLocalDate();
+				}
+				
+				employe = ligue.addEmploye(employe_sql.getInt(1), employe_sql.getString(2), employe_sql.getString(3), employe_sql.getString(4), employe_sql.getString(5), depart, arrivee);
+				
+				if(employe_sql.getInt(8) == 1) {
+					ligue.setAdministrateur(employe);
+				}
+			}
+			
+		} catch (SauvegardeImpossible | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		
+	}
+	
 	@Override
 	public GestionPersonnel getGestionPersonnel() 
 	{
 		GestionPersonnel gestionPersonnel = new GestionPersonnel();
 		Ligue ligue = null;
-		LocalDate depart = null;
-		LocalDate arrivee = null;
-		Employe employe = null;
 		try 
 		{
 			String requete = "select * from ligue";
@@ -83,33 +116,12 @@ public class JDBC implements Passerelle
 			while (ligues.next())
 				if(ligues != null) {
 			 	ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
-				PreparedStatement instruction_employe;
-				instruction_employe = connection.prepareStatement("select * from employes where id_ligue = ?");
-				instruction_employe.setInt(1, ligue.getid());
-				ResultSet employe_sql = instruction_employe.executeQuery();
-				while(employe_sql.next()) {
-					if(employe_sql.getDate(6) != null) {
-						depart = (employe_sql.getDate(6)).toLocalDate();
-					}
-					if(employe_sql.getDate(7) != null) {
-						arrivee = (employe_sql.getDate(7)).toLocalDate();
-					}
-					
-					employe = ligue.addEmploye(employe_sql.getInt(1), employe_sql.getString(2), employe_sql.getString(3), employe_sql.getString(4), employe_sql.getString(5), depart, arrivee);
-					
-					if(employe_sql.getInt(8) == 1) {
-						ligue.setAdministrateur(employe);
-					}
+			 	select_ligue(ligue);
 				}
-				}
-				//ligue.addEmploye(id, nom, prenom, mail, password)
 		}
 		catch (SQLException e)
 		{
 			System.out.println(e);
-		} catch (SauvegardeImpossible e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		return gestionPersonnel;
 	}
@@ -210,9 +222,9 @@ public class JDBC implements Passerelle
 				System.out.println(employe.getDateArrivee());
 				instruction.setDate(6, Date.valueOf(employe.getDateArrivee()));
 			}
-				
-			instruction.setInt(7, employe.getid());
 			
+			
+			instruction.setInt(7, employe.getid());
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 

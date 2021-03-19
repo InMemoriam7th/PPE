@@ -128,7 +128,6 @@ public class GestionPersonnel implements Serializable
 	{
 		passerelle.remove(ligue);
 		ligues.remove(ligue);
-		System.out.println("passe");
 		
 	}
 	

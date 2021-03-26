@@ -114,10 +114,6 @@ public class GestionPersonnel implements Serializable
 			passerelle.update(employe);
 	}
 	
-	void set_admin(Employe employe) throws SauvegardeImpossible 
-	{
-			passerelle.set_admin(employe);
-	}
 	
 	void remove(Employe employe) throws SauvegardeImpossible 
 	{

@@ -203,7 +203,7 @@ public class JDBC implements Passerelle
 			
 		try 
 		{
-			instruction = connection.prepareStatement("update employes set nom = ?, prenom = ?, mail = ?, password = ?, datedepart = ?, datearrivee = ? where id_employe = ?", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("update employes set nom = ?, prenom = ?, mail = ?, password = ?, datedepart = ?, datearrivee = ?, admin = ? where id_employe = ?", Statement.RETURN_GENERATED_KEYS);
 			
 			instruction.setString(1, employe.getNom());
 			instruction.setString(2, employe.getPrenom());
@@ -223,8 +223,20 @@ public class JDBC implements Passerelle
 				instruction.setDate(6, Date.valueOf(employe.getDateArrivee()));
 			}
 			
+			if(!employe.estRoot()) {
+			if (employe.estAdmin(employe.getLigue())) {
+				instruction.setInt(7,1);
+			}else {
+				instruction.setInt(7,0);
+			}
 			
-			instruction.setInt(7, employe.getid());
+			}else {
+				instruction.setInt(7,2);
+			}
+			
+			
+			
+			instruction.setInt(8, employe.getid());
 			instruction.executeUpdate();
 		} 
 		catch (SQLException exception) 
@@ -233,27 +245,6 @@ public class JDBC implements Passerelle
 			throw new SauvegardeImpossible(exception);
 		}
 		
-	}
-	
-	public void set_admin(Employe employe) throws SauvegardeImpossible  {
-		PreparedStatement instruction1;
-		PreparedStatement instruction2;
-		try {
-			if(employe.getLigue() != null) {
-			instruction1 = connection.prepareStatement("update employes set admin = 0 where admin = 1 and id_ligue = ?", Statement.RETURN_GENERATED_KEYS);
-			instruction1.setInt(1, employe.getLigue().getid());
-			instruction1.executeUpdate();
-			
-			instruction2 = connection.prepareStatement("update employes set admin = 1 where id_employe = ?", Statement.RETURN_GENERATED_KEYS);
-			instruction2.setInt(1, employe.getid());
-			instruction2.executeUpdate();
-			
-			}
-		} catch (SQLException exception) {
-			// TODO Auto-generated catch block
-			exception.printStackTrace();
-			throw new SauvegardeImpossible(exception);
-		}
 	}
 	
 	

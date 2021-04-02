@@ -33,6 +33,7 @@ public class JDBC implements Passerelle
 		catch (SQLException e)
 		{
 			System.out.println(e);
+			System.exit(0);
 		}
 	}
 	

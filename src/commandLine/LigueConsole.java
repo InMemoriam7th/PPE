@@ -98,9 +98,7 @@ public class LigueConsole
 				() -> 
 				{
 					try {
-						ligue.addEmploye(getString("nom : "), 
-							getString("prenom : "), getString("mail : "), 
-							getString("password : "));
+						ligue.addEmploye(getString("nom : "), getString("prenom : "), getString("mail : "), getString("password : "), null, null);
 					} catch (SauvegardeImpossible e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

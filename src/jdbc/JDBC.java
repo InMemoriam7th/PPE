@@ -172,7 +172,7 @@ public class JDBC implements Passerelle
 		PreparedStatement instruction;
 		try
 		{
-			instruction = connection.prepareStatement("update ligue set nom = ? where id_ligue = ?", Statement.RETURN_GENERATED_KEYS);
+			instruction = connection.prepareStatement("update ligue set nom_ligue = ? where id_ligue = ?", Statement.RETURN_GENERATED_KEYS);
 			instruction.setString(1, ligue.getNom());
 			instruction.setInt(2, ligue.getid());
 			instruction.executeUpdate();

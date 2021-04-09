@@ -32,7 +32,7 @@ class testLigue
 	 public void testAdministrateurligue() throws SauvegardeImpossible
 	 {
 		 Ligue ligue = gestionPersonnel.addLigue("Flechettes");
-		 Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", "azerty"); 
+		 Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", "azerty", null, null); 
 		 ligue.setAdministrateur(employe);
 		 assertEquals("Test de la fonction setAdministrateur et getAdministrateur", employe , ligue.getAdministrateur());
 	 }
@@ -42,7 +42,7 @@ class testLigue
 	void addEmploye() throws SauvegardeImpossible
 	{
 		Ligue ligue = gestionPersonnel.addLigue("Fléchettes");
-		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty"); 
+		Employe employe = ligue.addEmploye("Bouchard", "Gérard", "g.bouchard@gmail.com", "azerty", null, null); 
 		assertEquals(employe, ligue.getEmployes().first());
 	}
 	

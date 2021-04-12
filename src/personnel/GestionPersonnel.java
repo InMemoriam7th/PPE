@@ -86,6 +86,24 @@ public class GestionPersonnel implements Serializable
 	{
 		return Collections.unmodifiableSortedSet(ligues);
 	}
+	
+	public Employe check_account(String mail, String password) {
+		if(this.getRoot().getMail().equals(mail) && this.getRoot().checkPassword(password)) {
+			return this.getRoot();
+		}
+		SortedSet<Ligue> list_ligue = getLigues();
+		for(Ligue ligue : list_ligue) {
+			SortedSet<Employe> employe_list = ligue.getEmployes();
+			for(Employe employe:employe_list) {
+				if(employe.getMail().equals(mail)){
+					if(employe.checkPassword(password)) {
+						return employe;
+					}
+				}
+			}
+		}
+		return null;
+	}
 
 	public Ligue addLigue(String nom) throws SauvegardeImpossible
 	{

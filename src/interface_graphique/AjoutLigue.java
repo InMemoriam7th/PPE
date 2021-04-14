@@ -44,9 +44,9 @@ public class AjoutLigue implements ActionListener{
 		return item_frame;
 	}
 	private JPanel validerRetour() {
-		JPanel item_frame = itemFrame();
+		JPanel item_frame = item_frame();
 		valider.addActionListener(this);
-		retour.addActionListener(l);
+		retour.addActionListener(this);
 		item_frame.add(valider);
 		item_frame.add(retour);
 		return item_frame;

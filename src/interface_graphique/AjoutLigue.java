@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.JTextField;
 
-public class AjoutLigue implements ActionListener{
+public class AjoutLigue {// implements ActionListener{
 	private JFrame root_frame = new JFrame();
 	private JPanel main_frame = new JPanel();
 	private JLabel titre = new JLabel("Ajouter une ligue.");
@@ -50,8 +50,8 @@ public class AjoutLigue implements ActionListener{
 	}
 	private JPanel validerRetour() {
 		JPanel item_frame = item_frame();
-		valider.addActionListener(this);
-		retour.addActionListener(this);
+	//	valider.addActionListener(this);
+	//  retour.addActionListener(this);
 		item_frame.add(valider);
 		item_frame.add(retour);
 		return item_frame;

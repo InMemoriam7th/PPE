@@ -12,6 +12,11 @@ public class AjoutLigue implements ActionListener{
 	private JTextField ligue = new JTextField();
 	private JButton valider = new JButton("valider");
 	private JButton retour = new JButton("retour");
+	
+	public AjoutLigue() {
+		Root_frame();
+		Main_frame();
+	}
 
 	private void Root_frame() {
 		root_frame.setSize(300,300);
@@ -50,5 +55,8 @@ public class AjoutLigue implements ActionListener{
 		item_frame.add(valider);
 		item_frame.add(retour);
 		return item_frame;
+	}
+	public static void main(String[] args) {
+		new AjoutLigue();
 	}
 }

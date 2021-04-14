@@ -2,31 +2,26 @@ package interface_graphique;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
-import commandLine.PersonnelConsole;
+import java.awt.event.*;
+
+import interface_graphique.*;
 import personnel.Employe;
 import personnel.GestionPersonnel;
-
 
 
 public class Login implements ActionListener{
 	
 	private GestionPersonnel gestionPersonnel;
-	JOptionPane message_erreur = new JOptionPane();
+	private Employe employe;
+	private JOptionPane message_erreur = new JOptionPane();
 	private JFrame root_frame = new JFrame();
 	private JPanel main_frame = new JPanel();
 	private JLabel title = new JLabel("Connection");
@@ -36,20 +31,7 @@ public class Login implements ActionListener{
 	private JPasswordField password = new JPasswordField();
 	private JButton valider = new JButton("Valider");
 	
-	 @Override
-	 public void actionPerformed(ActionEvent e)
-	 {
-	  System.out.println(email.getText());
-	  System.out.println(password.getPassword());
-	  Employe employe = gestionPersonnel.check_account(email.getText(), String.valueOf(password.getPassword()));
-	  if(employe != null) {
-		  System.out.println("connecter");
-	  }else {
-		  message_erreur.showMessageDialog(root_frame, "Email ou mot de passe incorrecte", "Erreur" ,JOptionPane.ERROR_MESSAGE);
-		  
-	  }
-	 }
-	
+
 	public Login(GestionPersonnel gestionPersonnel) {
 		this.gestionPersonnel = gestionPersonnel;
 		Root_frame();
@@ -62,6 +44,7 @@ public class Login implements ActionListener{
 		root_frame.setVisible(true);
 		root_frame.getContentPane().add(main_frame);
 		root_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		root_frame.setLocationRelativeTo(null);
 	}
 	
 	private void Main_frame() {
@@ -80,6 +63,8 @@ public class Login implements ActionListener{
 	
 	private JPanel title() {
 		JPanel item_frame = item_frame();
+		title.setFont(new Font("Verdana", Font.PLAIN, 20));
+		title.setBorder(new EmptyBorder(10, 0, 20, 0));
 		item_frame.add(title);
 		return item_frame;
 	}
@@ -95,6 +80,7 @@ public class Login implements ActionListener{
 	private JPanel password() {
 		JPanel item_frame = item_frame();
 		password.setMaximumSize(new Dimension(150, 20));
+		password.addKeyListener(getKeyListener());
 		item_frame.add(password_label);
 		item_frame.add(password);
 		return item_frame;
@@ -106,6 +92,38 @@ public class Login implements ActionListener{
 		item_frame.add(valider);
 		return item_frame;
 	}
+	
+	 @Override
+	 public void actionPerformed(ActionEvent e)
+	 {
+		 check_value();
+	 }
+	 
+	 private KeyListener getKeyListener()
+	 {
+	  return new KeyAdapter()
+	  {
+	   @Override
+	   public void keyReleased(KeyEvent e)
+	   {
+		if(e.getKeyCode() == 10) {
+			check_value();
+		}
+
+	   }
+	  };
+	 }
+	 
+	 private void check_value() {
+		  employe = gestionPersonnel.check_account(email.getText(), String.valueOf(password.getPassword()));
+		  if(employe != null) {
+			  root_frame.dispose();
+			  new Main(gestionPersonnel, employe);
+		  }else {
+			  message_erreur.showMessageDialog(root_frame, "Email ou mot de passe incorrecte", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+		  }
+	 }
+	
 	
 	public static void main(String[] args) {
 		new Login(GestionPersonnel.getGestionPersonnel());

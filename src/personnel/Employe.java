@@ -297,11 +297,6 @@ public class Employe implements Serializable, Comparable<Employe>
 		if(this.date_depart != null)
 			res += ", Date de départ : " + date_depart;
 		
-		res += ", (";
-		if (estRoot())
-			res += "super-utilisateur";
-		else
-			res += ligue.toString();
-		return res + ")";
+		return res;
 	}
 }

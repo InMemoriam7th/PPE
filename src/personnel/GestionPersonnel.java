@@ -76,7 +76,8 @@ public class GestionPersonnel implements Serializable
 		else
 			return null;
 	}
-
+	
+	
 	/**
 	 * Retourne toutes les ligues enregistrées.
 	 * @return toutes les ligues enregistrées.

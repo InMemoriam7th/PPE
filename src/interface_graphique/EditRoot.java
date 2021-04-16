@@ -81,7 +81,7 @@ package interface_graphique;
 			return item_frame;
 		}
 		public static void main(String[] args) {
-			new AjoutEmploye();
+			new EditRoot();
 
 		}
 

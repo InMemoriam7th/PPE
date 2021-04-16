@@ -1,39 +1,24 @@
 # PPE-Groupe1
+## 1. Présentation
 
-## Itération 1
-- Modélisation d’une base de données avec un MCD.
+Un des responsables de la M2L, utilise une application pour gérer les employés des ligues. L’application est mise à votre disposition par le biais des ressources suivantes :
 
-- Vérification du fonctionnement correct de l’application grâce à des tests unitaires.
+* Le code source sur Github.
 
-- Gestion de la date de départ et de celle d’arrivée de chaque employé (couche métier + tests unitaires).
+* La documentation.
 
- - Représentation des menus du dialogue en ligne de commande avec un arbre heuristique (Utilisez un logiciel de type Freemind).
+* Une bibliothèque logiciel de dialogue en ligne de commande, disponible dans ce dépôt.
+Cette application, très simple, n’existe qu’en ligne de commande et est mono-utilisateur. Nous souhaiterions désigner un administrateur par ligue et lui confier la tâche de recenser les employés de sa ligue. Une partie du travail est déjà faite mais vous allez devoir le compléter.
 
-## Itération 2
+## 2. Spécification du besoin
+Les niveaux d’habilitation des utilisateurs sont les suivants :
 
-- Création de la base de données.
+* Un simple employé de ligue peut ouvrir l’application et s’en servir comme un annuaire, mais il ne dispose d’aucun droit d’écriture.
 
-- Gestion des dates dans le dialogue en ligne de commande.
+* Un employé par ligue est admininstrateur et dispose de droits d’écriture peut gérer la liste des emloyés de sa propre ligue avec une application bureau.
 
-- Dans le dialogue en ligne de commande, un employé doit être selectionné avant que l’on puisse choisir de modifier ou de supprimer.
+* Le super-admininstrateur a accès en écriture à tous les employés des ligues. Il peut aussi gérer les comptes des administrateurs des ligues avec une application accessible en ligne de commande.
 
-- Possibilité de changer l’administrateur d’une ligue en ligne de commande.
+* L’application doit être rendue multi-utilisateurs grace à l’utilisation d’une base de données.
 
-## Itération 3
-
-- Création d’une classe fille de Passerelle permettant de gérer la connexion à la base de données avec JDBC (ou avec Hibernate si vous le souhaitez).
-
-- Modélisation de l’interface graphique avec des maquettes.
-
-- Possibilité de changer l’administrateur d’une ligue en ligne de commande.
-
-## Itération 4
-
-- Création d’une interface graphique (Swing ou JavaFx) pour que les administrateurs puissent gérer les ligues.
-
-- Si une ligue n’a pas d’administrateur, c’est automatiquement le root qui devient l’administrateur de la ligue (avec les tests unitaires correspondants).
-
-- Installation de la base de données sur un serveur accessible dans le réseau local de la société.
-
-- Rédaction d’un mode opératoire à l’usage des administrateurs.
-3  Contraintes
+* Les trois niveaux d’habilitation ci-dessus doivent être mis en place.

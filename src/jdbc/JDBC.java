@@ -80,8 +80,9 @@ public class JDBC implements Passerelle
 			instruction_employe = connection.prepareStatement("select * from employes where id_ligue = ?");
 			instruction_employe.setInt(1, ligue.getid());
 			ResultSet employe_sql = instruction_employe.executeQuery();
-			
 			while(employe_sql.next()) {
+				depart = null;
+				arrivee = null;
 				if(employe_sql.getDate(6) != null) {
 					depart = (employe_sql.getDate(6)).toLocalDate();
 				}
@@ -90,7 +91,6 @@ public class JDBC implements Passerelle
 				}
 				
 				employe = ligue.addEmploye(employe_sql.getInt(1), employe_sql.getString(2), employe_sql.getString(3), employe_sql.getString(4), employe_sql.getString(5), depart, arrivee);
-				
 				if(employe_sql.getInt(8) == 1) {
 					ligue.setAdministrateur(employe);
 				}
@@ -237,7 +237,6 @@ public class JDBC implements Passerelle
 			if(employe.getDateArrivee() == null) {
 				instruction.setString(6, null);
 			}else {
-				System.out.println(employe.getDateArrivee());
 				instruction.setDate(6, Date.valueOf(employe.getDateArrivee()));
 			}
 			

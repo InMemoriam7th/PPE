@@ -8,40 +8,27 @@ import java.time.LocalDate;
 
 import personnel.Employe;
 
-public class Modifier_Employe implements ActionListener{
+public class ModifierEmploye{
 	private Employe employe;
 	private Ligue_edit ligue_edit;
-	private JOptionPane message_erreur = new JOptionPane();
 	private JFrame root_frame = new JFrame();
 	private JPanel main_frame = new JPanel();
-	private JLabel titre = new JLabel("Modifier un employe.");
-	private JLabel nom_label = new JLabel("*Nom : ");
 	private JTextField nom  = new JTextField();
-	private JLabel prenom_label = new JLabel("*Prénom : ");
 	private JTextField prenom = new JTextField();
-	private JLabel mail_label = new JLabel("*Mail : ");
 	private JTextField mail = new JTextField();
-	private JLabel password_label = new JLabel("*Mot de passe : ");
 	private JPasswordField password  = new JPasswordField();
-	private JLabel dateArrivee_label = new JLabel("Date d'arrivée : ");
-	private JLabel dateArrivee_jour_label = new JLabel("Jour : ");
-	private JLabel dateArrivee_mois_label = new JLabel("Mois: ");
-	private JLabel dateArrivee_annee_label = new JLabel("Année : ");
-	private JLabel dateDepart_jour_label = new JLabel("Jour : ");
-	private JLabel dateDepart_mois_label = new JLabel("Mois: ");
-	private JLabel dateDepart_annee_label = new JLabel("Année : ");
 	private JTextField dateArrivee_jour = new JTextField();
 	private JTextField dateArrivee_mois = new JTextField();
 	private JTextField dateArrivee_annee = new JTextField();
 	private JTextField dateDepart_jour = new JTextField();
 	private JTextField dateDepart_mois = new JTextField();
 	private JTextField dateDepart_annee = new JTextField();
-	private JLabel dateDepart_label = new JLabel("Date de départ: ");
-	private JTextField dateDepart = new JTextField();
-	private JButton modifier = new JButton("modifier");
-	private JButton suprimer = new JButton("Suprimer");
 	
-	public Modifier_Employe(Employe employe, Ligue_edit ligue_edit) {
+	private JTextField dateDepart = new JTextField();
+	
+	
+	
+	public ModifierEmploye(Employe employe, Ligue_edit ligue_edit) {
 		this.employe = employe;
 		this.ligue_edit = ligue_edit;
 		Root_frame();
@@ -75,12 +62,15 @@ public class Modifier_Employe implements ActionListener{
 	}
 	private JPanel titre() {
 		JPanel item_frame = item_frame();
+		JLabel titre = new JLabel("Modifier un employe.");
 		item_frame.add(titre);
 		return item_frame;
 	}
 	
 	private JPanel nomPrenom(){
 		JPanel item_frame = item_frame();
+		JLabel nom_label = new JLabel("*Nom : ");
+		JLabel prenom_label = new JLabel("*Prénom : ");
 		nom.setMaximumSize(new Dimension(150, 20));
 		prenom.setMaximumSize(new Dimension(150, 20));
 		nom.setText(employe.getNom());
@@ -94,6 +84,8 @@ public class Modifier_Employe implements ActionListener{
 	
 	private JPanel mailPwd() {
 		JPanel item_frame = item_frame();
+		JLabel mail_label = new JLabel("*Mail : ");
+		JLabel password_label = new JLabel("*Mot de passe : ");
 		mail.setMaximumSize(new Dimension(150, 20));
 		password.setMaximumSize(new Dimension(150, 20));
 		mail.setText(employe.getMail());
@@ -107,12 +99,17 @@ public class Modifier_Employe implements ActionListener{
 	
 	private JPanel label_date_arrivee() {
 		JPanel item_frame = item_frame();
+		JLabel dateArrivee_label = new JLabel("Date d'arrivée : ");
 		item_frame.add(dateArrivee_label);
 		return item_frame;
 	}
 	
 	private JPanel date_arrivee() {
 		JPanel item_frame = item_frame();
+		JLabel dateArrivee_jour_label = new JLabel("Jour : ");
+		JLabel dateArrivee_mois_label = new JLabel("Mois: ");
+		JLabel dateArrivee_annee_label = new JLabel("Année : ");
+		
 		dateArrivee_jour.setMaximumSize(new Dimension(150, 20));
 		dateArrivee_mois.setMaximumSize(new Dimension(150, 20));
 		dateArrivee_annee.setMaximumSize(new Dimension(150, 20));
@@ -132,12 +129,16 @@ public class Modifier_Employe implements ActionListener{
 	
 	private JPanel label_date_depart() {
 		JPanel item_frame = item_frame();
+		JLabel dateDepart_label = new JLabel("Date de départ: ");
 		item_frame.add(dateDepart_label);
 		return item_frame;
 	}
 	
 	private JPanel date_depart() {
 		JPanel item_frame = item_frame();
+		JLabel dateDepart_jour_label = new JLabel("Jour : ");
+		JLabel dateDepart_mois_label = new JLabel("Mois: ");
+		JLabel dateDepart_annee_label = new JLabel("Année : ");
 		dateDepart_jour.setMaximumSize(new Dimension(150, 20));
 		dateDepart_mois.setMaximumSize(new Dimension(150, 20));
 		dateDepart_annee.setMaximumSize(new Dimension(150, 20));
@@ -157,31 +158,33 @@ public class Modifier_Employe implements ActionListener{
 	
 	private JPanel valider() {
 		JPanel item_frame = item_frame();
-	    modifier.addActionListener(this);
-	    modifier.setName("modifier");
+		JButton modifier = new JButton("modifier");
+	    modifier.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				update_employe();
+			}
+		});
 		item_frame.add(modifier);
 		return item_frame;
 	}
 	
 	private JPanel suprimer() {
 		JPanel item_frame = item_frame();
-		suprimer.addActionListener(this);
-		suprimer.setName("suprimer");
+		JButton suprimer = new JButton("Suprimer");
+		suprimer.addActionListener(new ActionListener() {	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				suprimer_employe();	
+			}
+		});
 		item_frame.add(suprimer);
 		return item_frame;
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		  JButton button = (JButton) e.getSource();
-		  switch (button.getName()) {
-		  case "modifier":update_employe();break;
-		  case "suprimer":suprimer_employe();break;	
-		  }
-		
-	}
 	
 	private void update_employe() {
+		JOptionPane message_erreur = new JOptionPane();
 		if(nom.getText() != null && prenom.getText() != null && mail.getText() != null && password.getPassword() != null) {
 		employe.setNom(nom.getText());
 		employe.setPrenom(prenom.getText());

@@ -7,40 +7,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.SortedSet;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import personnel.Employe;
 import personnel.GestionPersonnel;
 import personnel.Ligue;
 
-public class Display_Ligue implements ActionListener{
+public class Display_Ligue{
 	
 	private GestionPersonnel gestionPersonnel;
 	private Employe employe;
-	private JOptionPane message_erreur = new JOptionPane();
+
 	private JFrame root_frame = new JFrame();
 	private JPanel main_frame = new JPanel();
-	private JLabel title = new JLabel("Selectionner une ligue");
+	
 	private DefaultListModel listModel = new DefaultListModel();
 	private JList list = new JList(listModel);
-	private JButton add_ligue = new JButton("Ajouter une ligue");
-	private JButton valider = new JButton("Sélectionner une ligue");
-	
 	
 	public Display_Ligue(GestionPersonnel gestionPersonnel, Employe employe) {
 		this.gestionPersonnel = gestionPersonnel;
@@ -73,6 +56,7 @@ public class Display_Ligue implements ActionListener{
 	
 	private JPanel title() {
 		JPanel item_frame = item_frame();
+		JLabel title = new JLabel("Selectionner une ligue");
 		title.setFont(new Font("Verdana", Font.PLAIN, 20));
 		title.setBorder(new EmptyBorder(10, 0, 20, 0));
 		item_frame.add(title);
@@ -101,8 +85,15 @@ public class Display_Ligue implements ActionListener{
 	
 	private JPanel button_addligue() {
 		JPanel item_frame = item_frame();
-		add_ligue.setName("add_ligue");
-		add_ligue.addActionListener(this);
+		JButton add_ligue = new JButton("Ajouter une ligue");
+		add_ligue.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				add_ligue();
+				
+			}
+		});
 		if(!employe.estRoot())
 			add_ligue.setEnabled(false);
 		item_frame.add(add_ligue);
@@ -112,20 +103,19 @@ public class Display_Ligue implements ActionListener{
 	
 	private JPanel button_valider() {
 		JPanel item_frame = item_frame();
-		valider.setName("valider");
-		valider.addActionListener(this);
+		JButton valider = new JButton("Sélectionner une ligue");
+		valider.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				valider();
+				
+			}
+		});
 		item_frame.add(valider);
 		return item_frame;
 	}
 	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		  JButton button = (JButton) e.getSource();
-		  switch (button.getName()) {
-		  case "add_ligue":add_ligue();break;
-		  case "valider":valider();break;	
-		  }
-	}
 	
 	private void add_ligue() {
 		new AjoutLigue(gestionPersonnel, this);
@@ -135,6 +125,7 @@ public class Display_Ligue implements ActionListener{
 		if(list.getSelectedValue() != null) {
 			new Ligue_edit(gestionPersonnel, employe, (Ligue) list.getSelectedValue(), this);
 		}else{
+			JOptionPane message_erreur = new JOptionPane();
 			message_erreur.showMessageDialog(root_frame, "Vous n'avez pas sélectionné de ligue", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 		}
 			

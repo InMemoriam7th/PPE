@@ -28,7 +28,7 @@ import personnel.Employe;
 import personnel.GestionPersonnel;
 import personnel.Ligue;
 
-public class Ligue_edit implements ActionListener{
+public class Ligue_edit{
 	private GestionPersonnel gestionPersonnel;
 	private Employe employe;
 	private Ligue ligue;
@@ -38,14 +38,10 @@ public class Ligue_edit implements ActionListener{
 	private JPanel edit_ligue = new JPanel();
 	private JPanel edit_employe = new JPanel();
 	/* Ligue */
-	private JLabel title_ligue = new JLabel("Éditer Ligue");
+//	private JLabel title_ligue = new JLabel("Éditer Ligue");
 	private JLabel nom_ligue = new JLabel("Nom de la ligue : ");
-	private JTextField nom_text_ligue = new JTextField();
-	private JButton button_update_nom_ligue = new JButton("Changer");
-	private JLabel admin_label = new JLabel();
-	private JLabel admin_change_label = new JLabel("Changer Administrateur : ");
-	private JComboBox<Employe> admin_combo = new JComboBox<Employe>();
-	private JButton button_update_adminligue = new JButton("Changer Administrateur");
+	private JTextField nomTextLigue = new JTextField();
+	private JButton buttonUpdateNomLigue = new JButton("Changer");
 	private JButton button_delete_ligue = new JButton("Suprimer la ligue");
 	/* Employee */
 	private JLabel title_employee = new JLabel("Employee");
@@ -88,10 +84,6 @@ public class Ligue_edit implements ActionListener{
 		edit_ligue.setLayout(new BoxLayout(edit_ligue, BoxLayout.PAGE_AXIS));
 		edit_ligue.add(title_ligue());
 		edit_ligue.add(frame_nom_ligue());
-		edit_ligue.add(display_admin());
-		edit_ligue.add(change_admin_label());
-		edit_ligue.add(change_admin_combobox());
-		edit_ligue.add(change_admin_button());
 		edit_ligue.add(button_suprimer());
 		return edit_ligue;
 	}
@@ -99,6 +91,7 @@ public class Ligue_edit implements ActionListener{
 
 	private JPanel title_ligue() {
 		JPanel item_frame = item_frame();
+		JLabel title_ligue = new JLabel("Éditer Ligue");
 		title_ligue.setFont(new Font("Verdana", Font.PLAIN, 20));
 		item_frame.add(title_ligue);
 		return item_frame;
@@ -106,59 +99,33 @@ public class Ligue_edit implements ActionListener{
 	
 	private JPanel frame_nom_ligue() {
 		JPanel item_frame = item_frame();
-		nom_text_ligue.setText(ligue.getNom());
-		nom_text_ligue.setMaximumSize(new Dimension(150, 20));
-		button_update_nom_ligue.addActionListener(this);
-		button_update_nom_ligue.setName("update_ligue");
+		nomTextLigue.setText(ligue.getNom());
+		nomTextLigue.setMaximumSize(new Dimension(150, 20));
+		buttonUpdateNomLigue.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				update_name_ligue();
+				
+			}
+		});
 		item_frame.add(nom_ligue);
-		item_frame.add(nom_text_ligue);
-		item_frame.add(button_update_nom_ligue);
+		item_frame.add(nomTextLigue);
+		item_frame.add(buttonUpdateNomLigue);
 		return item_frame;
 	}
 	
-	private JPanel display_admin() {
-		JPanel item_frame = item_frame();
-		Employe admin = ligue.getAdministrateur();
-		admin_label.setText("Administrateur de la ligue : " + admin.getNom() + " " + admin.getPrenom());
-		item_frame.add(admin_label);
-		item_frame.setBorder(new EmptyBorder(20, 0, 20, 0));
-		return item_frame;
-	}
-	
-	private void generate_list_admin() {
-		SortedSet<Employe> list_admin = ligue.getEmployes();
-		for(Employe employe : list_admin) {
-			admin_combo.addItem(employe);
-		}
-	}
-	
-	private JPanel change_admin_label() {
-		JPanel item_frame = item_frame();
-		item_frame.add(admin_change_label);
-		return item_frame;
-	}
-	
-	private JPanel change_admin_combobox() {
-		generate_list_admin();
-		JPanel item_frame = item_frame();
-		admin_combo.setMaximumSize(new Dimension(750, 20));
-		item_frame.add(admin_combo);
-		item_frame.add(button_update_adminligue);
-		return item_frame;
-	}
-	
-	private JPanel change_admin_button() {
-		JPanel item_frame = item_frame();
-		button_update_adminligue.addActionListener(this);
-		button_update_adminligue.setName("update_admin");
-		item_frame.add(button_update_adminligue);
-		return item_frame;
-	}
+
 	
 	private JPanel button_suprimer() {
 		JPanel item_frame = item_frame();
-		button_delete_ligue.addActionListener(this);
-		button_delete_ligue.setName("delete_ligue");
+		button_delete_ligue.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				delete_ligue();
+			}
+		});
 		item_frame.add(button_delete_ligue);
 		return item_frame;
 	}
@@ -210,44 +177,38 @@ public class Ligue_edit implements ActionListener{
 	
 	private JPanel button_modifier_employe() {
 		JPanel item_frame = item_frame_t();
-		button_modifier_employee.addActionListener(this);
-		button_modifier_employee.setName("modifier_employee");
+		button_modifier_employee.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				modifier_employee();	
+			}
+		});
 		item_frame.add(button_modifier_employee);
 		return item_frame;
 	}
 	private JPanel button_add_employe() {
 		JPanel item_frame = item_frame_t();
-		button_ajouter_employee.addActionListener(this);
-		button_ajouter_employee.setName("ajouter_employee");
+		button_ajouter_employee.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ajouter_employee();	
+			}
+		});
 		item_frame.add(button_ajouter_employee);
 		return item_frame;
 	}
 	
 	
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		  JButton button = (JButton) e.getSource();
-		  switch (button.getName()) {
-		  case "update_ligue":update_name_ligue();break;
-		  case "delete_ligue":delete_ligue();break;	
-		  case "modifier_employee":modifier_employee();break;	
-		  case "ajouter_employee":ajouter_employee();break;	
-		  }
-	}
 	
 	/* Ligue */
 	
 	private void update_name_ligue() {
-		ligue.setNom(nom_text_ligue.getText());
+		ligue.setNom(nomTextLigue.getText());
 		display_Ligue.generate_liste();
 	}
 	
-	private void update_admin_ligue() {
-		Employe employe = (Employe) admin_combo.getSelectedItem();
-		ligue.setAdministrateur(employe);
-		admin_label.setText("Administrateur de la ligue : " + employe.getNom() + " " + employe.getPrenom());
-	}
 	
 	private void delete_ligue() {
 		ligue.remove();
@@ -259,7 +220,7 @@ public class Ligue_edit implements ActionListener{
 	
 	private void modifier_employee() {
 		if(list.getSelectedValue() != null) {
-			new Modifier_Employe((Employe) list.getSelectedValue(), this);
+			new ModifierEmploye((Employe) list.getSelectedValue(), this);
 		}
 
 	}

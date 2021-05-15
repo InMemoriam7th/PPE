@@ -14,16 +14,14 @@ import javax.swing.JPanel;
 import personnel.Employe;
 import personnel.GestionPersonnel;
 
-public class Main implements ActionListener{
+public class Main{
 	
 	private GestionPersonnel gestionPersonnel;
 	private Employe employe;
 	private JFrame root_frame = new JFrame();
 	private JPanel main_frame = new JPanel();
-	private JLabel title = new JLabel("Gestion Des Ligues");
-	private JLabel message = new JLabel();
-	private JButton button_ligue = new JButton("Gérer les ligues");
-	private JButton button_root = new JButton("Gérer le compte root");
+	
+	
 	
 	
 	public Main(GestionPersonnel gestionPersonnel, Employe employe){
@@ -57,6 +55,7 @@ public class Main implements ActionListener{
 	
 	private JPanel title() {
 		JPanel item_frame = item_frame();
+		JLabel title = new JLabel("Gestion Des Ligues");
 		title.setFont(new Font("Verdana", Font.PLAIN, 25));
 		item_frame.add(title);
 		return item_frame;
@@ -64,40 +63,39 @@ public class Main implements ActionListener{
 	
 	private JPanel message() {
 		JPanel item_frame = item_frame();
-		message.setText("Bienvenue dans votre espace " + employe.getNom());
-		item_frame.add(message);
+		item_frame.add(new JLabel("Bienvenue dans votre espace " + employe.getNom()));
 		return item_frame;
 	}
 	
 	private JPanel button_ligue() {
 		JPanel item_frame = item_frame();
-		button_ligue.addActionListener(this);
+		JButton button_ligue = new JButton("Gérer les ligues");
+		button_ligue.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Display_Ligue(gestionPersonnel, employe);	
+			}
+		});
 		button_ligue.setMaximumSize(new Dimension(170, 40));
-		button_ligue.setName("ligue");
 		item_frame.add(button_ligue);
 		return item_frame;
 	}
 	
 	private JPanel button_root() {
 		JPanel item_frame = item_frame();
+		JButton button_root = new JButton("Gérer le compte root");
 		if(employe.estRoot()) {
-		button_root.addActionListener(this);
+		button_root.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Selected root");
+				
+			}
+		});
 		button_root.setMaximumSize(new Dimension(170, 40));
-		button_root.setName("root");
 		item_frame.add(button_root);
 		}
 		return item_frame;
 	}
 	
-
-	 @Override
-	 public void actionPerformed(ActionEvent e)
-	 {
-
-	  JButton button = (JButton) e.getSource();
-	  switch (button.getName()) {
-	  case "ligue":new Display_Ligue(gestionPersonnel, employe);break;
-	  case "root":System.out.println("Selected root");break;
-	}
-	 }
 }

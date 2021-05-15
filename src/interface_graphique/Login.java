@@ -17,20 +17,15 @@ import personnel.Employe;
 import personnel.GestionPersonnel;
 
 
-public class Login implements ActionListener{
+public class Login{
 	
 	private GestionPersonnel gestionPersonnel;
 	private Employe employe;
 	private JOptionPane message_erreur = new JOptionPane();
 	private JFrame root_frame = new JFrame();
 	private JPanel main_frame = new JPanel();
-	private JLabel title = new JLabel("Connection");
-	private JLabel email_label = new JLabel("Email : ");
 	private JTextField email = new JTextField();
-	private JLabel password_label = new JLabel("Password : ");
 	private JPasswordField password = new JPasswordField();
-	private JButton valider = new JButton("Valider");
-	
 
 	public Login(GestionPersonnel gestionPersonnel) {
 		this.gestionPersonnel = gestionPersonnel;
@@ -63,6 +58,7 @@ public class Login implements ActionListener{
 	
 	private JPanel title() {
 		JPanel item_frame = item_frame();
+		JLabel title = new JLabel("Connection");
 		title.setFont(new Font("Verdana", Font.PLAIN, 20));
 		title.setBorder(new EmptyBorder(10, 0, 20, 0));
 		item_frame.add(title);
@@ -71,7 +67,9 @@ public class Login implements ActionListener{
 	
 	private JPanel email() {
 		JPanel item_frame = item_frame();
+		JLabel email_label = new JLabel("Email : ");
 		email.setMaximumSize(new Dimension(150, 20));
+		
 		item_frame.add(email_label);
 		item_frame.add(email);
 		return item_frame;
@@ -79,6 +77,7 @@ public class Login implements ActionListener{
 	
 	private JPanel password() {
 		JPanel item_frame = item_frame();
+		JLabel password_label = new JLabel("Password : ");
 		password.setMaximumSize(new Dimension(150, 20));
 		password.addKeyListener(getKeyListener());
 		item_frame.add(password_label);
@@ -88,16 +87,16 @@ public class Login implements ActionListener{
 	
 	private JPanel valider() {
 		JPanel item_frame = item_frame();
-		valider.addActionListener(this);
+		JButton valider = new JButton("Valider");
+		valider.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				check_value();
+			}
+		});
 		item_frame.add(valider);
 		return item_frame;
 	}
-	
-	 @Override
-	 public void actionPerformed(ActionEvent e)
-	 {
-		 check_value();
-	 }
 	 
 	 private KeyListener getKeyListener()
 	 {

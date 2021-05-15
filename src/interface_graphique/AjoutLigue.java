@@ -13,17 +13,14 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class AjoutLigue implements ActionListener{ 
+public class AjoutLigue{ 
 	
 	private GestionPersonnel gestionPersonnel;
 	private Display_Ligue display_Ligue;
 	private JFrame root_frame = new JFrame();
 	private JPanel main_frame = new JPanel();
-	private JLabel titre = new JLabel("Ajouter une ligue.");
-	private JLabel ligue_label = new JLabel("Entrer le nom de la ligue : ");
 	private JTextField ligue = new JTextField();
 	private JButton valider = new JButton("valider");
-	private JButton retour = new JButton("retour");
 	
 	public AjoutLigue(GestionPersonnel gestionPersonnel, Display_Ligue display_Ligue) {
 		this.display_Ligue = display_Ligue;
@@ -52,11 +49,13 @@ public class AjoutLigue implements ActionListener{
 	}
 	private JPanel titre() {
 		JPanel item_frame = item_frame();
+		JLabel titre = new JLabel("Ajouter une ligue.");
 		item_frame.add(titre);
 		return item_frame;
 	}
 	private JPanel ligue() {
 		JPanel item_frame = item_frame();
+		JLabel ligue_label = new JLabel("Entrer le nom de la ligue : ");
 		ligue.setMaximumSize(new Dimension(150, 20));
 		ligue.addKeyListener(getKeyListener());
 		item_frame.add(ligue_label);
@@ -66,16 +65,17 @@ public class AjoutLigue implements ActionListener{
 	private JPanel validerRetour() {
 		JPanel item_frame = item_frame();
 		valider.setEnabled(false);
-		valider.addActionListener(this);
-		retour.addActionListener(this);
+		valider.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				add_ligue();
+				
+			}
+		});
 		item_frame.add(valider);
 		return item_frame;
 	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-			add_ligue();	
-		  }
 
 	
 	 private KeyListener getKeyListener()

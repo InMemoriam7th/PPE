@@ -16,65 +16,65 @@ import java.awt.event.KeyListener;
 public class AjoutLigue{ 
 	
 	private GestionPersonnel gestionPersonnel;
-	private Display_Ligue display_Ligue;
-	private JFrame root_frame = new JFrame();
-	private JPanel main_frame = new JPanel();
+	private DisplayLigue displayLigue;
+	private JFrame rootframe = new JFrame();
+	private JPanel mainframe = new JPanel();
 	private JTextField ligue = new JTextField();
 	private JButton valider = new JButton("valider");
 	
-	public AjoutLigue(GestionPersonnel gestionPersonnel, Display_Ligue display_Ligue) {
-		this.display_Ligue = display_Ligue;
+	public AjoutLigue(GestionPersonnel gestionPersonnel, DisplayLigue displayLigue) {
+		this.displayLigue = displayLigue;
 		this.gestionPersonnel = gestionPersonnel;
-		Root_frame();
-		Main_frame();
+		RootFrame();
+		MainFrame();
 	}
 
-	private void Root_frame() {
-		root_frame.setSize(300,150);
-		root_frame.setVisible(true);
-		root_frame.getContentPane().add(main_frame);
-		root_frame.setLocationRelativeTo(null);
+	private void RootFrame() {
+		rootframe.setSize(300,150);
+		rootframe.setVisible(true);
+		rootframe.getContentPane().add(mainframe);
+		rootframe.setLocationRelativeTo(null);
 	}
 	
-	private void Main_frame() {
-		main_frame.setLayout(new BoxLayout(main_frame, BoxLayout.PAGE_AXIS));
-		main_frame.add(titre());
-		main_frame.add(ligue());
-		main_frame.add(validerRetour());
+	private void MainFrame() {
+		mainframe.setLayout(new BoxLayout(mainframe, BoxLayout.PAGE_AXIS));
+		mainframe.add(titre());
+		mainframe.add(ligue());
+		mainframe.add(ValiderRetour());
 	}
-	private JPanel item_frame() {
-		JPanel item_frame = new JPanel();
-		item_frame.setLayout(new BoxLayout(item_frame, BoxLayout.LINE_AXIS));
-		return item_frame;
+	private JPanel ItemFrame() {
+		JPanel itemframe = new JPanel();
+		itemframe.setLayout(new BoxLayout(itemframe, BoxLayout.LINE_AXIS));
+		return itemframe;
 	}
 	private JPanel titre() {
-		JPanel item_frame = item_frame();
+		JPanel itemframe = ItemFrame();
 		JLabel titre = new JLabel("Ajouter une ligue.");
-		item_frame.add(titre);
-		return item_frame;
+		itemframe.add(titre);
+		return itemframe;
 	}
 	private JPanel ligue() {
-		JPanel item_frame = item_frame();
-		JLabel ligue_label = new JLabel("Entrer le nom de la ligue : ");
+		JPanel itemframe = ItemFrame();
+		JLabel liguelabel = new JLabel("Entrer le nom de la ligue : ");
 		ligue.setMaximumSize(new Dimension(150, 20));
 		ligue.addKeyListener(getKeyListener());
-		item_frame.add(ligue_label);
-		item_frame.add(ligue);
-		return item_frame;
+		itemframe.add(liguelabel);
+		itemframe.add(ligue);
+		return itemframe;
 	}
-	private JPanel validerRetour() {
-		JPanel item_frame = item_frame();
+	private JPanel ValiderRetour() {
+		JPanel itemframe = ItemFrame();
 		valider.setEnabled(false);
 		valider.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				add_ligue();
+				AddLigue();
 				
 			}
 		});
-		item_frame.add(valider);
-		return item_frame;
+		itemframe.add(valider);
+		return itemframe;
 	}
 
 	
@@ -94,15 +94,15 @@ public class AjoutLigue{
 	  };
 	 }
 	
-	private void add_ligue() {
+	private void AddLigue() {
 		try {
 			gestionPersonnel.addLigue(ligue.getText());
 		} catch (SauvegardeImpossible e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		root_frame.dispose();
-		display_Ligue.generate_liste();
+		rootframe.dispose();
+		displayLigue.GenerateListe();
 	}
 
 }

@@ -12,10 +12,10 @@ import personnel.SauvegardeImpossible;
 
 public class AjoutEmploye{
 	private Ligue ligue;
-	private Ligue_edit ligue_edit;
+	private LigueEdit ligueedit;
 	
-	private JFrame root_frame = new JFrame();
-	private JPanel main_frame = new JPanel();
+	private JFrame rootframe = new JFrame();
+	private JPanel mainframe = new JPanel();
 
 	private JTextField nom  = new JTextField();
 	
@@ -24,78 +24,78 @@ public class AjoutEmploye{
 	
 	private JPasswordField password  = new JPasswordField();
 
-	private JTextField dateArrivee_jour = new JTextField();
-	private JTextField dateArrivee_mois = new JTextField();
-	private JTextField dateArrivee_annee = new JTextField();
-	private JTextField dateDepart_jour = new JTextField();
-	private JTextField dateDepart_mois = new JTextField();
-	private JTextField dateDepart_annee = new JTextField();
+	private JTextField dateArriveejour = new JTextField();
+	private JTextField dateArriveemois = new JTextField();
+	private JTextField dateArriveeannee = new JTextField();
+	private JTextField dateDepartjour = new JTextField();
+	private JTextField dateDepartmois = new JTextField();
+	private JTextField dateDepartannee = new JTextField();
 	
 	private JTextField dateDepart = new JTextField();
 	
-	public AjoutEmploye(Ligue ligue, Ligue_edit ligue_edit) {
+	public AjoutEmploye(Ligue ligue, LigueEdit ligue_edit) {
 		this.ligue = ligue;
-		this.ligue_edit = ligue_edit;
-		Root_frame();
-		Main_frame();
+		this.ligueedit = ligue_edit;
+		Rootframe();
+		Mainframe();
 		
 	}
 	
-	private void Root_frame() {
-		root_frame.setSize(500,400);
-		root_frame.setVisible(true);
-		root_frame.getContentPane().add(main_frame);
+	private void Rootframe() {
+		rootframe.setSize(500,400);
+		rootframe.setVisible(true);
+		rootframe.getContentPane().add(mainframe);
 	}
 	
-	private void Main_frame() {
-		main_frame.setLayout(new BoxLayout(main_frame, BoxLayout.PAGE_AXIS));
-		main_frame.add(titre());
-		main_frame.add(nomPrenom());
-		main_frame.add(mailPwd());
-		main_frame.add(ajouter());
+	private void Mainframe() {
+		mainframe.setLayout(new BoxLayout(mainframe, BoxLayout.PAGE_AXIS));
+		mainframe.add(Titre());
+		mainframe.add(NomPrenom());
+		mainframe.add(MailPwd());
+		mainframe.add(Ajouter());
 	}
 	
-	private JPanel item_frame() {
-		JPanel item_frame = new JPanel();
-		item_frame.setLayout(new BoxLayout(item_frame, BoxLayout.LINE_AXIS));
-		return item_frame;
+	private JPanel ItemFrame() {
+		JPanel itemframe = new JPanel();
+		itemframe.setLayout(new BoxLayout(itemframe, BoxLayout.LINE_AXIS));
+		return itemframe;
 	}
-	private JPanel titre() {
-		JPanel item_frame = item_frame();
+	private JPanel Titre() {
+		JPanel itemframe = ItemFrame();
 		JLabel titre = new JLabel("Ajouter un employe.");
-		item_frame.add(titre);
-		return item_frame;
+		itemframe.add(titre);
+		return itemframe;
 	}
 	
-	private JPanel nomPrenom(){
-		JPanel item_frame = item_frame();
-		JLabel nom_label = new JLabel("*Nom : ");
-		JLabel prenom_label = new JLabel("*Prénom : ");
+	private JPanel NomPrenom(){
+		JPanel itemframe = ItemFrame();
+		JLabel nomlabel = new JLabel("*Nom : ");
+		JLabel prenomlabel = new JLabel("*Prénom : ");
 		nom.setMaximumSize(new Dimension(150, 20));
 		prenom.setMaximumSize(new Dimension(150, 20));
-		item_frame.add(nom_label);
-		item_frame.add(nom);
-		item_frame.add(prenom_label);
-		item_frame.add(prenom);
-		return item_frame;
+		itemframe.add(nomlabel);
+		itemframe.add(nom);
+		itemframe.add(prenomlabel);
+		itemframe.add(prenom);
+		return itemframe;
 	}
 	
-	private JPanel mailPwd() {
-		JPanel item_frame = item_frame();
-		JLabel mail_label = new JLabel("*Mail : ");
-		JLabel password_label = new JLabel("*Mot de passe : ");
+	private JPanel MailPwd() {
+		JPanel itemframe = ItemFrame();
+		JLabel maillabel = new JLabel("*Mail : ");
+		JLabel passwordlabel = new JLabel("*Mot de passe : ");
 		mail.setMaximumSize(new Dimension(150, 20));
 		password.setMaximumSize(new Dimension(150, 20));
-		item_frame.add(mail_label);
-		item_frame.add(mail);
-		item_frame.add(password_label);
-		item_frame.add(password);
-		return item_frame;
+		itemframe.add(maillabel);
+		itemframe.add(mail);
+		itemframe.add(passwordlabel);
+		itemframe.add(password);
+		return itemframe;
 	}
 	
-	private JPanel ajouter() {
-		JOptionPane message_erreur = new JOptionPane();
-		JPanel item_frame = item_frame();
+	private JPanel Ajouter() {
+		JOptionPane messageerreur = new JOptionPane();
+		JPanel itemframe = ItemFrame();
 		JButton ajouter = new JButton("Ajouter");
 	    ajouter.addActionListener(new ActionListener() {
 			@Override
@@ -107,16 +107,16 @@ public class AjoutEmploye{
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}finally {
-						root_frame.dispose();
-						ligue_edit.generate_liste_employee();
+						rootframe.dispose();
+						ligueedit.GenerateListeEmployee();
 					}
 				}else {
-					message_erreur.showMessageDialog(root_frame, "Des champs obligatoire sont vide", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+					messageerreur.showMessageDialog(rootframe, "Des champs obligatoire sont vide", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
-		item_frame.add(ajouter);
-		return item_frame;
+		itemframe.add(ajouter);
+		return itemframe;
 	}
 		
 	}

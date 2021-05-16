@@ -10,209 +10,209 @@ import personnel.Employe;
 
 public class ModifierEmploye{
 	private Employe employe;
-	private Ligue_edit ligue_edit;
-	private JFrame root_frame = new JFrame();
-	private JPanel main_frame = new JPanel();
+	private LigueEdit ligue_edit;
+	private JFrame rootframe = new JFrame();
+	private JPanel mainframe = new JPanel();
 	private JTextField nom  = new JTextField();
 	private JTextField prenom = new JTextField();
 	private JTextField mail = new JTextField();
 	private JPasswordField password  = new JPasswordField();
-	private JTextField dateArrivee_jour = new JTextField();
-	private JTextField dateArrivee_mois = new JTextField();
-	private JTextField dateArrivee_annee = new JTextField();
-	private JTextField dateDepart_jour = new JTextField();
-	private JTextField dateDepart_mois = new JTextField();
-	private JTextField dateDepart_annee = new JTextField();
+	private JTextField dateArriveejour = new JTextField();
+	private JTextField dateArriveemois = new JTextField();
+	private JTextField dateArriveeannee = new JTextField();
+	private JTextField dateDepartjour = new JTextField();
+	private JTextField dateDepartmois = new JTextField();
+	private JTextField dateDepartannee = new JTextField();
 	
 	private JTextField dateDepart = new JTextField();
 	
 	
 	
-	public ModifierEmploye(Employe employe, Ligue_edit ligue_edit) {
+	public ModifierEmploye(Employe employe, LigueEdit ligue_edit) {
 		this.employe = employe;
 		this.ligue_edit = ligue_edit;
-		Root_frame();
-		Main_frame();
+		RootFrame();
+		MainFrame();
 		
 	}
 	
-	private void Root_frame() {
-		root_frame.setSize(500,400);
-		root_frame.setVisible(true);
-		root_frame.getContentPane().add(main_frame);
+	private void RootFrame() {
+		rootframe.setSize(500,400);
+		rootframe.setVisible(true);
+		rootframe.getContentPane().add(mainframe);
 	}
 	
-	private void Main_frame() {
-		main_frame.setLayout(new BoxLayout(main_frame, BoxLayout.PAGE_AXIS));
-		main_frame.add(titre());
-		main_frame.add(nomPrenom());
-		main_frame.add(mailPwd());
-		main_frame.add(label_date_arrivee());
-		main_frame.add(date_arrivee());
-		main_frame.add(label_date_depart());
-		main_frame.add(date_depart());
-		main_frame.add(valider());
-		main_frame.add(suprimer());
+	private void MainFrame() {
+		mainframe.setLayout(new BoxLayout(mainframe, BoxLayout.PAGE_AXIS));
+		mainframe.add(Titre());
+		mainframe.add(NomPrenom());
+		mainframe.add(MailPwd());
+		mainframe.add(LabelDateArrivee());
+		mainframe.add(DateArrivee());
+		mainframe.add(LabelDateDepart());
+		mainframe.add(DateDepart());
+		mainframe.add(Valider());
+		mainframe.add(Supprimer());
 	}
 	
-	private JPanel item_frame() {
-		JPanel item_frame = new JPanel();
-		item_frame.setLayout(new BoxLayout(item_frame, BoxLayout.LINE_AXIS));
-		return item_frame;
+	private JPanel ItemFrame() {
+		JPanel itemframe = new JPanel();
+		itemframe.setLayout(new BoxLayout(itemframe, BoxLayout.LINE_AXIS));
+		return itemframe;
 	}
-	private JPanel titre() {
-		JPanel item_frame = item_frame();
+	private JPanel Titre() {
+		JPanel itemframe = ItemFrame();
 		JLabel titre = new JLabel("Modifier un employe.");
-		item_frame.add(titre);
-		return item_frame;
+		itemframe.add(titre);
+		return itemframe;
 	}
 	
-	private JPanel nomPrenom(){
-		JPanel item_frame = item_frame();
-		JLabel nom_label = new JLabel("*Nom : ");
-		JLabel prenom_label = new JLabel("*Prénom : ");
+	private JPanel NomPrenom(){
+		JPanel itemframe = ItemFrame();
+		JLabel nomlabel = new JLabel("*Nom : ");
+		JLabel prenomlabel = new JLabel("*Prénom : ");
 		nom.setMaximumSize(new Dimension(150, 20));
 		prenom.setMaximumSize(new Dimension(150, 20));
 		nom.setText(employe.getNom());
 		prenom.setText(employe.getPrenom());
-		item_frame.add(nom_label);
-		item_frame.add(nom);
-		item_frame.add(prenom_label);
-		item_frame.add(prenom);
-		return item_frame;
+		itemframe.add(nomlabel);
+		itemframe.add(nom);
+		itemframe.add(prenomlabel);
+		itemframe.add(prenom);
+		return itemframe;
 	}
 	
-	private JPanel mailPwd() {
-		JPanel item_frame = item_frame();
-		JLabel mail_label = new JLabel("*Mail : ");
-		JLabel password_label = new JLabel("*Mot de passe : ");
+	private JPanel MailPwd() {
+		JPanel itemframe = ItemFrame();
+		JLabel maillabel = new JLabel("*Mail : ");
+		JLabel passwordlabel = new JLabel("*Mot de passe : ");
 		mail.setMaximumSize(new Dimension(150, 20));
 		password.setMaximumSize(new Dimension(150, 20));
 		mail.setText(employe.getMail());
 		password.setText(employe.getPassword());
-		item_frame.add(mail_label);
-		item_frame.add(mail);
-		item_frame.add(password_label);
-		item_frame.add(password);
+		itemframe.add(maillabel);
+		itemframe.add(mail);
+		itemframe.add(passwordlabel);
+		itemframe.add(password);
+		return itemframe;
+	}
+	
+	private JPanel LabelDateArrivee() {
+		JPanel itemframe = ItemFrame();
+		JLabel dateArriveelabel = new JLabel("Date d'arrivée : ");
+		itemframe.add(dateArriveelabel);
+		return itemframe;
+	}
+	
+	private JPanel DateArrivee() {
+		JPanel item_frame = ItemFrame();
+		JLabel dateArriveejourlabel = new JLabel("Jour : ");
+		JLabel dateArriveemoislabel = new JLabel("Mois: ");
+		JLabel dateArriveeanneelabel = new JLabel("Année : ");
+		
+		dateArriveejour.setMaximumSize(new Dimension(150, 20));
+		dateArriveemois.setMaximumSize(new Dimension(150, 20));
+		dateArriveeannee.setMaximumSize(new Dimension(150, 20));
+		
+		item_frame.add(dateArriveejour);
+		item_frame.add(dateArriveemois);
+		item_frame.add(dateArriveeannee);
+		
+		item_frame.add(dateArriveejourlabel);
+		item_frame.add(dateArriveejour);
+		item_frame.add(dateArriveemoislabel);
+		item_frame.add(dateArriveemois);
+		item_frame.add(dateArriveeanneelabel);
+		item_frame.add(dateArriveeannee);
 		return item_frame;
 	}
 	
-	private JPanel label_date_arrivee() {
-		JPanel item_frame = item_frame();
-		JLabel dateArrivee_label = new JLabel("Date d'arrivée : ");
-		item_frame.add(dateArrivee_label);
-		return item_frame;
+	private JPanel LabelDateDepart() {
+		JPanel itemframe = ItemFrame();
+		JLabel dateDepartlabel = new JLabel("Date de départ: ");
+		itemframe.add(dateDepartlabel);
+		return itemframe;
 	}
 	
-	private JPanel date_arrivee() {
-		JPanel item_frame = item_frame();
-		JLabel dateArrivee_jour_label = new JLabel("Jour : ");
-		JLabel dateArrivee_mois_label = new JLabel("Mois: ");
-		JLabel dateArrivee_annee_label = new JLabel("Année : ");
+	private JPanel DateDepart() {
+		JPanel itemframe = ItemFrame();
+		JLabel dateDepartjourlabel = new JLabel("Jour : ");
+		JLabel dateDepartmoislabel = new JLabel("Mois: ");
+		JLabel dateDepartanneelabel = new JLabel("Année : ");
+		dateDepartjour.setMaximumSize(new Dimension(150, 20));
+		dateDepartmois.setMaximumSize(new Dimension(150, 20));
+		dateDepartannee.setMaximumSize(new Dimension(150, 20));
 		
-		dateArrivee_jour.setMaximumSize(new Dimension(150, 20));
-		dateArrivee_mois.setMaximumSize(new Dimension(150, 20));
-		dateArrivee_annee.setMaximumSize(new Dimension(150, 20));
+		itemframe.add(dateDepartjour);
+		itemframe.add(dateDepartmois);
+		itemframe.add(dateDepartannee);
 		
-		item_frame.add(dateArrivee_jour);
-		item_frame.add(dateArrivee_mois);
-		item_frame.add(dateArrivee_annee);
-		
-		item_frame.add(dateArrivee_jour_label);
-		item_frame.add(dateArrivee_jour);
-		item_frame.add(dateArrivee_mois_label);
-		item_frame.add(dateArrivee_mois);
-		item_frame.add(dateArrivee_annee_label);
-		item_frame.add(dateArrivee_annee);
-		return item_frame;
+		itemframe.add(dateDepartjourlabel);
+		itemframe.add(dateDepartjour);
+		itemframe.add(dateDepartmoislabel);
+		itemframe.add(dateDepartmois);
+		itemframe.add(dateDepartanneelabel);
+		itemframe.add(dateDepartannee);
+		return itemframe;
 	}
 	
-	private JPanel label_date_depart() {
-		JPanel item_frame = item_frame();
-		JLabel dateDepart_label = new JLabel("Date de départ: ");
-		item_frame.add(dateDepart_label);
-		return item_frame;
-	}
-	
-	private JPanel date_depart() {
-		JPanel item_frame = item_frame();
-		JLabel dateDepart_jour_label = new JLabel("Jour : ");
-		JLabel dateDepart_mois_label = new JLabel("Mois: ");
-		JLabel dateDepart_annee_label = new JLabel("Année : ");
-		dateDepart_jour.setMaximumSize(new Dimension(150, 20));
-		dateDepart_mois.setMaximumSize(new Dimension(150, 20));
-		dateDepart_annee.setMaximumSize(new Dimension(150, 20));
-		
-		item_frame.add(dateDepart_jour);
-		item_frame.add(dateDepart_mois);
-		item_frame.add(dateDepart_annee);
-		
-		item_frame.add(dateDepart_jour_label);
-		item_frame.add(dateDepart_jour);
-		item_frame.add(dateDepart_mois_label);
-		item_frame.add(dateDepart_mois);
-		item_frame.add(dateDepart_annee_label);
-		item_frame.add(dateDepart_annee);
-		return item_frame;
-	}
-	
-	private JPanel valider() {
-		JPanel item_frame = item_frame();
+	private JPanel Valider() {
+		JPanel itemframe = ItemFrame();
 		JButton modifier = new JButton("modifier");
 	    modifier.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				update_employe();
+				UpdateEmploye();
 			}
 		});
-		item_frame.add(modifier);
-		return item_frame;
+		itemframe.add(modifier);
+		return itemframe;
 	}
 	
-	private JPanel suprimer() {
-		JPanel item_frame = item_frame();
-		JButton suprimer = new JButton("Suprimer");
-		suprimer.addActionListener(new ActionListener() {	
+	private JPanel Supprimer() {
+		JPanel itemframe = ItemFrame();
+		JButton supprimer = new JButton("Supprimer");
+		supprimer.addActionListener(new ActionListener() {	
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				suprimer_employe();	
+				SupprimerEmploye();	
 			}
 		});
-		item_frame.add(suprimer);
-		return item_frame;
+		itemframe.add(supprimer);
+		return itemframe;
 	}
 
 	
-	private void update_employe() {
-		JOptionPane message_erreur = new JOptionPane();
+	private void UpdateEmploye() {
+		JOptionPane messageerreur = new JOptionPane();
 		if(nom.getText() != null && prenom.getText() != null && mail.getText() != null && password.getPassword() != null) {
 		employe.setNom(nom.getText());
 		employe.setPrenom(prenom.getText());
 		employe.setMail(mail.getText());
 		employe.setPassword(String.valueOf(password.getPassword()));
 		try {
-			LocalDate date = LocalDate.of(Integer.parseInt(dateArrivee_annee.getText()), Integer.parseInt(dateArrivee_mois.getText()), Integer.parseInt(dateArrivee_jour.getText()));
+			LocalDate date = LocalDate.of(Integer.parseInt(dateArriveeannee.getText()), Integer.parseInt(dateArriveemois.getText()), Integer.parseInt(dateArriveejour.getText()));
 			employe.setDateArrivee(date);
 		}catch (Exception e) {
 			// TODO: handle exception
 		}
 		try {
-			LocalDate date = LocalDate.of(Integer.parseInt(dateDepart_annee.getText()), Integer.parseInt(dateDepart_mois.getText()), Integer.parseInt(dateDepart_jour.getText()));
+			LocalDate date = LocalDate.of(Integer.parseInt(dateDepartannee.getText()), Integer.parseInt(dateDepartmois.getText()), Integer.parseInt(dateDepartjour.getText()));
 			employe.setDateDepart(date);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		root_frame.dispose();
-		ligue_edit.generate_liste_employee();
+		rootframe.dispose();
+		ligue_edit.GenerateListeEmployee();
 		}else {
-			message_erreur.showMessageDialog(root_frame, "Des champs obligatoire sont vide", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+			messageerreur.showMessageDialog(rootframe, "Des champs obligatoire sont vide", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 		}
 	}
 	
-	private void suprimer_employe() {
+	private void SupprimerEmploye() {
 		employe.remove();
-		root_frame.dispose();
-		ligue_edit.generate_liste_employee();
+		rootframe.dispose();
+		ligue_edit.GenerateListeEmployee();
 	}
 
 }

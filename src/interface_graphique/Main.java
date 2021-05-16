@@ -18,84 +18,82 @@ public class Main{
 	
 	private GestionPersonnel gestionPersonnel;
 	private Employe employe;
-	private JFrame root_frame = new JFrame();
-	private JPanel main_frame = new JPanel();
-	
-	
+	private JFrame rootframe = new JFrame();
+	private JPanel mainframe = new JPanel();
 	
 	
 	public Main(GestionPersonnel gestionPersonnel, Employe employe){
 		this.gestionPersonnel = gestionPersonnel;
 		this.employe = employe;
-		Root_frame();
-		Main_frame();
+		RootFrame();
+		MainFrame();
 	}
 	
-	private void Root_frame() {
-		root_frame.setSize(400,200);
-		root_frame.setVisible(true);
-		root_frame.getContentPane().add(main_frame);
-		root_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		root_frame.setLocationRelativeTo(null);
+	private void RootFrame() {
+		rootframe.setSize(400,200);
+		rootframe.setVisible(true);
+		rootframe.getContentPane().add(mainframe);
+		rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		rootframe.setLocationRelativeTo(null);
 	}
 	
-	private void Main_frame() {
-		main_frame.setLayout(new BoxLayout(main_frame, BoxLayout.PAGE_AXIS));
-		main_frame.add(title());
-		main_frame.add(message());
-		main_frame.add(button_ligue());
-		main_frame.add(button_root());
+	private void MainFrame() {
+		mainframe.setLayout(new BoxLayout(mainframe, BoxLayout.PAGE_AXIS));
+		mainframe.add(title());
+		mainframe.add(Message());
+		mainframe.add(ButtonLigue());
+		mainframe.add(ButtonRoot());
 	}
 	
-	private JPanel item_frame() {
+	private JPanel ItemFrame() {
 		JPanel item_frame = new JPanel();
 		item_frame.setLayout(new BoxLayout(item_frame, BoxLayout.LINE_AXIS));
 		return item_frame;
 	}
 	
 	private JPanel title() {
-		JPanel item_frame = item_frame();
+		JPanel itemframe = ItemFrame();
 		JLabel title = new JLabel("Gestion Des Ligues");
 		title.setFont(new Font("Verdana", Font.PLAIN, 25));
-		item_frame.add(title);
-		return item_frame;
+		itemframe.add(title);
+		return itemframe;
 	}
 	
-	private JPanel message() {
-		JPanel item_frame = item_frame();
-		item_frame.add(new JLabel("Bienvenue dans votre espace " + employe.getNom()));
-		return item_frame;
+	private JPanel Message() {
+		JPanel itemframe = ItemFrame();
+		itemframe.add(new JLabel("Bienvenue dans votre espace " + employe.getNom()));
+		return itemframe;
 	}
 	
-	private JPanel button_ligue() {
-		JPanel item_frame = item_frame();
-		JButton button_ligue = new JButton("Gérer les ligues");
-		button_ligue.addActionListener(new ActionListener() {
+	private JPanel ButtonLigue() {
+		JPanel itemframe = ItemFrame();
+		JButton buttonligue = new JButton("Gérer les ligues");
+		buttonligue.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new Display_Ligue(gestionPersonnel, employe);	
+				new DisplayLigue(gestionPersonnel, employe);	
 			}
 		});
-		button_ligue.setMaximumSize(new Dimension(170, 40));
-		item_frame.add(button_ligue);
-		return item_frame;
+		buttonligue.setMaximumSize(new Dimension(170, 40));
+		itemframe.add(buttonligue);
+		return itemframe;
 	}
 	
-	private JPanel button_root() {
-		JPanel item_frame = item_frame();
-		JButton button_root = new JButton("Gérer le compte root");
+	private JPanel ButtonRoot() {
+		JPanel itemframe = ItemFrame();
+		JButton buttonroot = new JButton("Gérer le compte root");
 		if(employe.estRoot()) {
-		button_root.addActionListener(new ActionListener() {
+		buttonroot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Selected root");
 				
 			}
 		});
-		button_root.setMaximumSize(new Dimension(170, 40));
-		item_frame.add(button_root);
+		buttonroot.setMaximumSize(new Dimension(170, 40));
+		itemframe.add(buttonroot);
 		}
-		return item_frame;
+		return itemframe;
 	}
 	
 }

@@ -22,61 +22,61 @@ public class Login{
 	private GestionPersonnel gestionPersonnel;
 	private Employe employe;
 	private JOptionPane message_erreur = new JOptionPane();
-	private JFrame root_frame = new JFrame();
-	private JPanel main_frame = new JPanel();
+	private JFrame rootframe = new JFrame();
+	private JPanel mainframe = new JPanel();
 	private JTextField email = new JTextField();
 	private JPasswordField password = new JPasswordField();
 
 	public Login(GestionPersonnel gestionPersonnel) {
 		this.gestionPersonnel = gestionPersonnel;
-		Root_frame();
-		Main_frame();
+		RootFrame();
+		MainFrame();
 	}
 	
 	
-	private void Root_frame() {
-		root_frame.setSize(300,300);
-		root_frame.setVisible(true);
-		root_frame.getContentPane().add(main_frame);
-		root_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		root_frame.setLocationRelativeTo(null);
+	private void RootFrame() {
+		rootframe.setSize(300,300);
+		rootframe.setVisible(true);
+		rootframe.getContentPane().add(mainframe);
+		rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		rootframe.setLocationRelativeTo(null);
 	}
 	
-	private void Main_frame() {
-		main_frame.setLayout(new BoxLayout(main_frame, BoxLayout.PAGE_AXIS));
-		main_frame.add(title());
-		main_frame.add(email());
-		main_frame.add(password());
-		main_frame.add(valider());
+	private void MainFrame() {
+		mainframe.setLayout(new BoxLayout(mainframe, BoxLayout.PAGE_AXIS));
+		mainframe.add(Title());
+		mainframe.add(Email());
+		mainframe.add(password());
+		mainframe.add(valider());
 	}
 	
-	private JPanel item_frame() {
-		JPanel item_frame = new JPanel();
-		item_frame.setLayout(new BoxLayout(item_frame, BoxLayout.LINE_AXIS));
-		return item_frame;
+	private JPanel ItemFrame() {
+		JPanel itemframe = new JPanel();
+		itemframe.setLayout(new BoxLayout(itemframe, BoxLayout.LINE_AXIS));
+		return itemframe;
 	}
 	
-	private JPanel title() {
-		JPanel item_frame = item_frame();
+	private JPanel Title() {
+		JPanel itemframe = ItemFrame();
 		JLabel title = new JLabel("Connection");
 		title.setFont(new Font("Verdana", Font.PLAIN, 20));
 		title.setBorder(new EmptyBorder(10, 0, 20, 0));
-		item_frame.add(title);
-		return item_frame;
+		itemframe.add(title);
+		return itemframe;
 	}
 	
-	private JPanel email() {
-		JPanel item_frame = item_frame();
-		JLabel email_label = new JLabel("Email : ");
+	private JPanel Email() {
+		JPanel itemframe = ItemFrame();
+		JLabel emaillabel = new JLabel("Email : ");
 		email.setMaximumSize(new Dimension(150, 20));
 		
-		item_frame.add(email_label);
-		item_frame.add(email);
-		return item_frame;
+		itemframe.add(emaillabel);
+		itemframe.add(email);
+		return itemframe;
 	}
 	
 	private JPanel password() {
-		JPanel item_frame = item_frame();
+		JPanel item_frame = ItemFrame();
 		JLabel password_label = new JLabel("Password : ");
 		password.setMaximumSize(new Dimension(150, 20));
 		password.addKeyListener(getKeyListener());
@@ -86,7 +86,7 @@ public class Login{
 	}
 	
 	private JPanel valider() {
-		JPanel item_frame = item_frame();
+		JPanel item_frame = ItemFrame();
 		JButton valider = new JButton("Valider");
 		valider.addActionListener(new ActionListener() {
 			@Override
@@ -116,10 +116,10 @@ public class Login{
 	 private void check_value() {
 		  employe = gestionPersonnel.check_account(email.getText(), String.valueOf(password.getPassword()));
 		  if(employe != null) {
-			  root_frame.dispose();
+			  rootframe.dispose();
 			  new Main(gestionPersonnel, employe);
 		  }else {
-			  message_erreur.showMessageDialog(root_frame, "Email ou mot de passe incorrecte", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+			  message_erreur.showMessageDialog(rootframe, "Email ou mot de passe incorrecte", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 		  }
 	 }
 	

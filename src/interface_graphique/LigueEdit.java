@@ -40,6 +40,7 @@ public class LigueEdit{
 	
 	/* Ligue */
 	private JTextField nomTextLigue = new JTextField();
+	private JLabel labeladministrateur = new JLabel();
 	
 	/* Employee */
 	private DefaultListModel listModel = new DefaultListModel();
@@ -80,6 +81,7 @@ public class LigueEdit{
 	private JPanel EditLigue() {
 		editligue.setLayout(new BoxLayout(editligue, BoxLayout.PAGE_AXIS));
 		editligue.add(TitleLigue());
+		editligue.add(DisplayAdmin());
 		editligue.add(FrameNomligue());
 		editligue.add(ButtonSupprimer());
 		return editligue;
@@ -130,6 +132,18 @@ public class LigueEdit{
 		return itemframe;
 	}
 	
+	public void UpdateAdmin() {
+		Employe admin = ligue.getAdministrateur();
+		labeladministrateur.setText("Administrateur : " + admin.getNom() + " " + admin.getPrenom());
+	}
+	
+	private JPanel DisplayAdmin() {
+		JPanel itemframe = ItemFrameLigue();
+		UpdateAdmin();
+		itemframe.add(labeladministrateur);
+		return itemframe;
+	}
+	
 	/* Page edition Employee */
 	
 	
@@ -153,7 +167,6 @@ public class LigueEdit{
 		for(Employe ligue : listligue) {
 			listModel.addElement(ligue);
 		}
-		
 	}
 	
 	private JPanel TitleEmployee() {
@@ -224,7 +237,7 @@ public class LigueEdit{
 	
 	private void ModifierEmployee() {
 		if(list.getSelectedValue() != null) {
-			new ModifierEmploye((Employe) list.getSelectedValue(), this);
+			new ModifierEmploye((Employe) list.getSelectedValue(), ligue ,this);
 		}
 
 	}

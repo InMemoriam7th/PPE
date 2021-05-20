@@ -100,7 +100,7 @@ public class AjoutEmploye{
 	    ajouter.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(nom.getText() == "" && prenom.getText() == "" && mail.getText() == "" && String.valueOf(password.getPassword()) == "") {
+				if(nom.getText() != "" && prenom.getText() != "" && mail.getText() != "" && String.valueOf(password.getPassword()) != "") {
 					try {
 						ligue.addEmploye(nom.getText(), prenom.getText(), mail.getText(), String.valueOf(password.getPassword()), null, null);
 					} catch (SauvegardeImpossible e1) {

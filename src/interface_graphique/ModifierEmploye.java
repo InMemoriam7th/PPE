@@ -7,10 +7,12 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 import personnel.Employe;
+import personnel.Ligue;
 
 public class ModifierEmploye{
 	private Employe employe;
-	private LigueEdit ligue_edit;
+	private LigueEdit ligueedit;
+	private Ligue ligue;
 	private JFrame rootframe = new JFrame();
 	private JPanel mainframe = new JPanel();
 	private JTextField nom  = new JTextField();
@@ -28,9 +30,10 @@ public class ModifierEmploye{
 	
 	
 	
-	public ModifierEmploye(Employe employe, LigueEdit ligue_edit) {
+	public ModifierEmploye(Employe employe,Ligue ligue ,LigueEdit ligueedit) {
 		this.employe = employe;
-		this.ligue_edit = ligue_edit;
+		this.ligueedit = ligueedit;
+		this.ligue = ligue;
 		RootFrame();
 		MainFrame();
 		
@@ -53,6 +56,7 @@ public class ModifierEmploye{
 		mainframe.add(DateDepart());
 		mainframe.add(Valider());
 		mainframe.add(Supprimer());
+		mainframe.add(SetAdministrateur());
 	}
 	
 	private JPanel ItemFrame() {
@@ -181,6 +185,20 @@ public class ModifierEmploye{
 		itemframe.add(supprimer);
 		return itemframe;
 	}
+	
+	private JPanel SetAdministrateur() {
+		JPanel itemframe = ItemFrame();
+		JButton buttonsetadmin = new JButton("Définir comme Administrateur");
+		buttonsetadmin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ligue.setAdministrateur(employe);
+				ligueedit.UpdateAdmin();
+			}
+		});
+		itemframe.add(buttonsetadmin);
+		return itemframe;
+	}
 
 	
 	private void UpdateEmploye() {
@@ -203,7 +221,7 @@ public class ModifierEmploye{
 			// TODO: handle exception
 		}
 		rootframe.dispose();
-		ligue_edit.GenerateListeEmployee();
+		ligueedit.GenerateListeEmployee();
 		}else {
 			messageerreur.showMessageDialog(rootframe, "Des champs obligatoire sont vide", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 		}
@@ -212,7 +230,8 @@ public class ModifierEmploye{
 	private void SupprimerEmploye() {
 		employe.remove();
 		rootframe.dispose();
-		ligue_edit.GenerateListeEmployee();
+		ligueedit.GenerateListeEmployee();
 	}
+	
 
 }

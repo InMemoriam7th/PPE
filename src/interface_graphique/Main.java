@@ -86,7 +86,7 @@ public class Main{
 		buttonroot.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Selected root");
+				new EditRoot(gestionPersonnel, employe);
 				
 			}
 		});

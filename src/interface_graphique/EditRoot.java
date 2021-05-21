@@ -2,87 +2,112 @@ package interface_graphique;
 
 	import javax.swing.*;
 	import java.awt.*;
-	import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JTextField;
+
+import personnel.Employe;
+import personnel.GestionPersonnel;
 
 	public class EditRoot {
-		private JFrame root_frame = new JFrame();
-		private JPanel main_frame = new JPanel();
-		private JLabel titre = new JLabel("Modifier Le compte Root.");
-		private JLabel nom_label = new JLabel("Nom : ");
+		private GestionPersonnel gestionPersonnel;
+		private Employe employe;
+		private JFrame rootframe = new JFrame();
+		private JPanel mainframe = new JPanel();
+		
 		private JTextField nom  = new JTextField();
-		private JLabel prenom_label = new JLabel("Prénom : ");
+		
 		private JTextField prenom = new JTextField();
-		private JLabel mail_label = new JLabel("Mail : ");
+		
 		private JTextField mail = new JTextField();
-		private JLabel password_label = new JLabel("Mot de passe : ");
+		
 		private JPasswordField password  = new JPasswordField();
 
-		private JButton valider = new JButton("valider");
-		private JButton retour = new JButton("retour");
 		
-		public EditRoot() {
-			Root_frame();
-			Main_frame();
+		
+		
+		public EditRoot(GestionPersonnel gestionPersonnel, Employe employe) {
+			this.gestionPersonnel = gestionPersonnel;
+			this.employe = employe;
+			RootFrame();
+			MainFrame();
 		}
 		
-		private void Root_frame() {
-			root_frame.setSize(300,300);
-			root_frame.setVisible(true);
-			root_frame.getContentPane().add(main_frame);
-			root_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		private void RootFrame() {
+			rootframe.setSize(300,300);
+			rootframe.setVisible(true);
+			rootframe.getContentPane().add(mainframe);
+			rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 		
-		private void Main_frame() {
-			main_frame.setLayout(new BoxLayout(main_frame, BoxLayout.PAGE_AXIS));
-			main_frame.add(titre());
-			main_frame.add(nomPrenom());
-			main_frame.add(mailPwd());
-			main_frame.add(validerRetour());
+		private void MainFrame() {
+			mainframe.setLayout(new BoxLayout(mainframe, BoxLayout.PAGE_AXIS));
+			mainframe.add(Titre());
+			mainframe.add(NomPrenom());
+			mainframe.add(MailPwd());
+			mainframe.add(ValiderRetour());
 		}
 		
-		private JPanel item_frame() {
-			JPanel item_frame = new JPanel();
-			item_frame.setLayout(new BoxLayout(item_frame, BoxLayout.LINE_AXIS));
-			return item_frame;
+		private JPanel ItemFrame() {
+			JPanel itemframe = new JPanel();
+			itemframe.setLayout(new BoxLayout(itemframe, BoxLayout.LINE_AXIS));
+			return itemframe;
 		}
-		private JPanel titre() {
-			JPanel item_frame = item_frame();
-			item_frame.add(titre);
-			return item_frame;
+		private JPanel Titre() {
+			JPanel itemframe = ItemFrame();
+			JLabel titre = new JLabel("Modifier Le compte Root.");
+			itemframe.add(titre);
+			return itemframe;
 		}
 		
-		private JPanel nomPrenom(){
-			JPanel item_frame = item_frame();
+		private JPanel NomPrenom(){
+			JPanel itemframe = ItemFrame();
+			JLabel nomlabel = new JLabel("Nom : ");
+			JLabel prenomlabel = new JLabel("Prénom : ");
 			nom.setMaximumSize(new Dimension(150, 20));
 			prenom.setMaximumSize(new Dimension(150, 20));
-			item_frame.add(nom_label);
-			item_frame.add(nom);
-			item_frame.add(prenom_label);
-			item_frame.add(prenom);
-			return item_frame;
+			nom.setText(employe.getNom());
+			prenom.setText(employe.getPrenom());
+			itemframe.add(nomlabel);
+			itemframe.add(nom);
+			itemframe.add(prenomlabel);
+			itemframe.add(prenom);
+			return itemframe;
 		}
 		
-		private JPanel mailPwd() {
-			JPanel item_frame = item_frame();
+		private JPanel MailPwd() {
+			JPanel itemframe = ItemFrame();
+			JLabel maillabel = new JLabel("Mail : ");
+			JLabel passwordlabel = new JLabel("Mot de passe : ");
 			mail.setMaximumSize(new Dimension(150, 20));
 			password.setMaximumSize(new Dimension(150, 20));
-			item_frame.add(mail_label);
-			item_frame.add(mail);
-			item_frame.add(password_label);
-			item_frame.add(password);
-			return item_frame;
+			mail.setText(employe.getMail());
+			password.setText(employe.getPassword());
+			itemframe.add(maillabel);
+			itemframe.add(mail);
+			itemframe.add(passwordlabel);
+			itemframe.add(password);
+			return itemframe;
 		}
-		private JPanel validerRetour() {
-			JPanel item_frame = item_frame();
-		//	valider.addActionListener(this);
-		//  retour.addActionListener(this);
-			item_frame.add(valider);
-			item_frame.add(retour);
-			return item_frame;
-		}
-		public static void main(String[] args) {
-			new EditRoot();
-
+		private JPanel ValiderRetour() {
+			JPanel itemframe = ItemFrame();
+			JButton valider = new JButton("valider");
+			valider.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(!nom.getText().isEmpty() && !String.valueOf(password.getPassword()).isEmpty()) {
+						employe.setNom(nom.getText());
+						employe.setPrenom(prenom.getText());
+						employe.setMail(mail.getText());
+						employe.setPassword(String.valueOf(password.getPassword()));
+						rootframe.dispose();
+					}
+				}
+			});
+			itemframe.add(valider);
+			return itemframe;
 		}
 
 	

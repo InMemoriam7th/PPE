@@ -100,6 +100,8 @@ public class LigueEdit{
 		JPanel itemframe = ItemFrameLigue();
 		JLabel nomligue = new JLabel("Nom de la ligue : ");
 		JButton buttonUpdateNomLigue = new JButton("Changer");
+		if(!(employe.estRoot() || employe.estAdmin(ligue)))
+			buttonUpdateNomLigue.setEnabled(false);
 		nomTextLigue.setText(ligue.getNom());
 		nomTextLigue.setMaximumSize(new Dimension(150, 20));
 		buttonUpdateNomLigue.addActionListener(new ActionListener() {
@@ -121,6 +123,8 @@ public class LigueEdit{
 	private JPanel ButtonSupprimer() {
 		JPanel itemframe = ItemFrameLigue();
 		JButton buttondeleteligue = new JButton("Suprimer la ligue");
+		if(!(employe.estRoot() || employe.estAdmin(ligue)))
+			buttondeleteligue.setEnabled(false);
 		buttondeleteligue.addActionListener(new ActionListener() {
 			
 			@Override
@@ -193,6 +197,8 @@ public class LigueEdit{
 	private JPanel ButtonModifierEmploye() {
 		JPanel itemframe = ItemFrameEmployee();
 		JButton buttonmodifieremployee = new JButton("Modifier");
+		if(!(employe.estRoot() || employe.estAdmin(ligue)))
+			buttonmodifieremployee.setEnabled(false);
 		buttonmodifieremployee.addActionListener(new ActionListener() {
 			
 			@Override
@@ -206,6 +212,8 @@ public class LigueEdit{
 	private JPanel ButtonAddEmployee() {
 		JPanel itemframe = ItemFrameEmployee();
 		JButton buttonajouteremployee = new JButton("Ajouter un employee");
+		if(!(employe.estRoot() || employe.estAdmin(ligue)))
+			buttonajouteremployee.setEnabled(false);
 		buttonajouteremployee.addActionListener(new ActionListener() {
 			
 			@Override

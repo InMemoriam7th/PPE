@@ -29,8 +29,8 @@ public class Login{
 
 	public Login(GestionPersonnel gestionPersonnel) {
 		this.gestionPersonnel = gestionPersonnel;
-		RootFrame();
 		MainFrame();
+		RootFrame();
 	}
 	
 	
@@ -67,7 +67,7 @@ public class Login{
 	
 	private JPanel Email() {
 		JPanel itemframe = ItemFrame();
-		JLabel emaillabel = new JLabel("Email : ");
+		JLabel emaillabel = new JLabel("Utilisateur ou Email : ");
 		email.setMaximumSize(new Dimension(150, 20));
 		
 		itemframe.add(emaillabel);
@@ -77,7 +77,7 @@ public class Login{
 	
 	private JPanel password() {
 		JPanel item_frame = ItemFrame();
-		JLabel password_label = new JLabel("Password : ");
+		JLabel password_label = new JLabel("Mot de passe : ");
 		password.setMaximumSize(new Dimension(150, 20));
 		password.addKeyListener(getKeyListener());
 		item_frame.add(password_label);
@@ -114,7 +114,7 @@ public class Login{
 	 }
 	 
 	 private void check_value() {
-		  employe = gestionPersonnel.check_account(email.getText(), String.valueOf(password.getPassword()));
+		  employe = gestionPersonnel.checkAccount(email.getText(), String.valueOf(password.getPassword()));
 		  if(employe != null) {
 			  rootframe.dispose();
 			  new Main(gestionPersonnel, employe);

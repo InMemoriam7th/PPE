@@ -20,7 +20,7 @@ public class GestionPersonnel implements Serializable
 	private static final long serialVersionUID = -105283113987886425L;
 	private static GestionPersonnel gestionPersonnel = null;
 	private SortedSet<Ligue> ligues;
-	private Employe root = new Employe(this, null, "root", "", "", "toor", null, null);
+	private Employe root = new Employe(this, null, "root", "", "root@admin.fr", "toor", null, null);
 	public final static int SERIALIZATION = 1, JDBC = 2, 
 			TYPE_PASSERELLE = JDBC;  
 	private static Passerelle passerelle = TYPE_PASSERELLE == JDBC ? new jdbc.JDBC() : new serialisation.Serialization();	
@@ -88,15 +88,16 @@ public class GestionPersonnel implements Serializable
 		return Collections.unmodifiableSortedSet(ligues);
 	}
 	
-	public Employe check_account(String mail, String password) {
-		if(this.getRoot().getMail().equals(mail) && this.getRoot().checkPassword(password)) {
-			return this.getRoot();
+	public Employe checkAccount(String user,  String password) {
+		if(this.getRoot().getNom().equals(user) || this.getRoot().getMail().equals(user)){
+			if(this.getRoot().checkPassword(password))
+				return this.getRoot();
 		}
 		SortedSet<Ligue> list_ligue = getLigues();
 		for(Ligue ligue : list_ligue) {
 			SortedSet<Employe> employe_list = ligue.getEmployes();
 			for(Employe employe:employe_list) {
-				if(employe.getMail().equals(mail)){
+				if(employe.getMail().equals(user) || employe.getNom().equals(user)){
 					if(employe.checkPassword(password)) {
 						return employe;
 					}

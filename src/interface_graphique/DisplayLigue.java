@@ -37,6 +37,7 @@ public class DisplayLigue{
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setLocationRelativeTo(null);
+		rootframe.setTitle("Ligues");
 	}
 	
 	private void MainFrame() {

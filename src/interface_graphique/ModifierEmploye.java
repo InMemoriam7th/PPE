@@ -46,6 +46,7 @@ public class ModifierEmploye{
 		rootframe.setSize(500,400);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
+		rootframe.setTitle("Modifier un employée");
 	}
 	
 	private void MainFrame() {

@@ -34,6 +34,7 @@ public class AjoutLigue{
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setLocationRelativeTo(null);
+		rootframe.setTitle("Ajouter une ligue");
 	}
 	
 	private void MainFrame() {

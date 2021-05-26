@@ -40,6 +40,7 @@ public class Login{
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		rootframe.setLocationRelativeTo(null);
+		rootframe.setTitle("Connexion");
 	}
 	
 	private void MainFrame() {
@@ -58,7 +59,7 @@ public class Login{
 	
 	private JPanel Title() {
 		JPanel itemframe = ItemFrame();
-		JLabel title = new JLabel("Connection");
+		JLabel title = new JLabel("Connexion");
 		title.setFont(new Font("Verdana", Font.PLAIN, 20));
 		title.setBorder(new EmptyBorder(10, 0, 20, 0));
 		itemframe.add(title);

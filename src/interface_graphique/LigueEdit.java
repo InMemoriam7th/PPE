@@ -63,6 +63,7 @@ public class LigueEdit{
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(tabbedframe);
 		rootframe.setLocationRelativeTo(null);
+		rootframe.setTitle(ligue.getNom());
 	}
 	
 	private void TabbedFrame() {
@@ -230,6 +231,7 @@ public class LigueEdit{
 	
 	private void UpdateNameLigue() {
 		ligue.setNom(nomTextLigue.getText());
+		rootframe.setTitle(nomTextLigue.getText());
 		displayLigue.GenerateListe();
 	}
 	

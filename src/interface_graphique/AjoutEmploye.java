@@ -23,15 +23,6 @@ public class AjoutEmploye{
 	private JTextField mail = new JTextField();
 	
 	private JPasswordField password  = new JPasswordField();
-
-	private JTextField dateArriveejour = new JTextField();
-	private JTextField dateArriveemois = new JTextField();
-	private JTextField dateArriveeannee = new JTextField();
-	private JTextField dateDepartjour = new JTextField();
-	private JTextField dateDepartmois = new JTextField();
-	private JTextField dateDepartannee = new JTextField();
-	
-	private JTextField dateDepart = new JTextField();
 	
 	public AjoutEmploye(Ligue ligue, LigueEdit ligue_edit) {
 		this.ligue = ligue;
@@ -45,6 +36,7 @@ public class AjoutEmploye{
 		rootframe.setSize(500,400);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
+		rootframe.setTitle("Ajouter un employée");
 	}
 	
 	private void Mainframe() {
@@ -62,7 +54,7 @@ public class AjoutEmploye{
 	}
 	private JPanel Titre() {
 		JPanel itemframe = ItemFrame();
-		JLabel titre = new JLabel("Ajouter un employe.");
+		JLabel titre = new JLabel("Ajouter un employée.");
 		itemframe.add(titre);
 		return itemframe;
 	}

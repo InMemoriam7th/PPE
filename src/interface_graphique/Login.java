@@ -78,6 +78,7 @@ public class Login{
 	private JPanel password() {
 		JPanel item_frame = ItemFrame();
 		JLabel password_label = new JLabel("Mot de passe : ");
+		password_label.setMaximumSize(new Dimension(117, 20));
 		password.setMaximumSize(new Dimension(150, 20));
 		password.addKeyListener(getKeyListener());
 		item_frame.add(password_label);

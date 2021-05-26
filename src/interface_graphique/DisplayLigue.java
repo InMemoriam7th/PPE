@@ -36,7 +36,6 @@ public class DisplayLigue{
 		rootframe.setSize(600,500);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
-		rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		rootframe.setLocationRelativeTo(null);
 	}
 	

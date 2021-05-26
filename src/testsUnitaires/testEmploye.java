@@ -46,6 +46,7 @@ public class testEmploye {
 			 assertThat(e.getMessage(), is("La date d'arrivée est null"));
 		}
 		 
+		ligue.remove();
 		 
 	 }
 	 @Test
@@ -77,6 +78,8 @@ public class testEmploye {
 		 }catch (DateException e) {
 			 assertThat(e.getMessage(), is("La date depart est null"));
 		}
+		 
+		 ligue.remove();
 	 }
 	 @Test
 	 public void testNom() throws SauvegardeImpossible
@@ -85,6 +88,7 @@ public class testEmploye {
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty", null, null);
 		 employe.setNom("Bouchard");
 		 assertEquals("Test de la fonction set et get nom", "Bouchard", employe.getNom()); 
+		 ligue.remove();
 	 }
 	 @Test
 	 public void testPrenom() throws SauvegardeImpossible
@@ -93,6 +97,7 @@ public class testEmploye {
 		 Employe employe = ligue.addEmploye("Raharison", "Kevin", "R.Kevin@gmail.com", "qwerty", null, null);
 		 employe.setPrenom("Alexandre");
 		 assertEquals("test de la fonction set et get prenom", "Alexandre", employe.getPrenom());
+		 ligue.remove();
 	 }
 	 @Test
 	 public void testMail() throws SauvegardeImpossible
@@ -101,6 +106,7 @@ public class testEmploye {
 		 Employe employe = ligue.addEmploye("Cance", "Alexandre", "c.alexandre@gmail.com", "qwerty", null, null);
 		 employe.setMail("R.Kevin@gmail.com");
 		 assertEquals("Test de la fonction set et get mail", "R.Kevin@gmail.com", employe.getMail()); 
+		 ligue.remove();
 	 }
 	 @Test
 	 public void testPassword() throws SauvegardeImpossible
@@ -112,6 +118,8 @@ public class testEmploye {
 		 employe.setPassword("azerty");
 		 assertEquals("Test de la fonction set et check password", true, employe.checkPassword("azerty"));
 		 assertEquals("Test de la fonction set et check password", false, employe.checkPassword("qwerty")); 
+		 
+		 ligue.remove();
 	 }
 	 @Test
      public void testAdministrateurligue() throws SauvegardeImpossible
@@ -120,5 +128,7 @@ public class testEmploye {
          Employe employe = ligue.addEmploye("Bouchard", "Gerard", "g.bouchard@gmail.com", "azerty", null, null); 
          ligue.setAdministrateur(employe);
          assertEquals("Test de la fonction setAdministrateur et getAdministrateur", employe , ligue.getAdministrateur());
+         
+         ligue.remove();
      }
 }

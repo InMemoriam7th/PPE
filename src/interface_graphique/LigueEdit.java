@@ -59,7 +59,7 @@ public class LigueEdit{
 	}
 	
 	private void RootFrame() {
-		rootframe.setSize(800,500);
+		rootframe.setSize(1000,500);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(tabbedframe);
 		rootframe.setLocationRelativeTo(null);
@@ -186,9 +186,8 @@ public class LigueEdit{
 		GenerateListeEmployee();
 		JPanel itemframe = ItemFrameEmployee();
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list.setPreferredSize(new Dimension(800,100));
 		itemframe.add(list);
-		itemframe.setMinimumSize(new Dimension(300, 500));
-		itemframe.setMaximumSize(new Dimension(300, 500));
 		JScrollPane listScrollPane = new JScrollPane(list);
 		itemframe.add(listScrollPane);
 		return itemframe;

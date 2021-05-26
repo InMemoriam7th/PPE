@@ -1,6 +1,9 @@
 package interface_graphique;
 
 import javax.swing.*;
+
+import exception.DateException;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -211,14 +214,22 @@ public class ModifierEmploye{
 		try {
 			LocalDate date = LocalDate.of(Integer.parseInt(dateArriveeannee.getText()), Integer.parseInt(dateArriveemois.getText()), Integer.parseInt(dateArriveejour.getText()));
 			employe.setDateArrivee(date);
-		}catch (Exception e) {
-			// TODO: handle exception
+		}catch (DateException e) {
+			messageerreur.showMessageDialog(rootframe, e, "Erreur" ,JOptionPane.ERROR_MESSAGE);
+			return;
+		}catch(NumberFormatException e) {
+			messageerreur.showMessageDialog(rootframe, "La date d'arrivée n'existe pas", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+			return;
 		}
 		try {
 			LocalDate date = LocalDate.of(Integer.parseInt(dateDepartannee.getText()), Integer.parseInt(dateDepartmois.getText()), Integer.parseInt(dateDepartjour.getText()));
 			employe.setDateDepart(date);
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (DateException e) {
+			messageerreur.showMessageDialog(rootframe, e, "Erreur" ,JOptionPane.ERROR_MESSAGE);
+			return;
+		} catch (NumberFormatException e) {
+			messageerreur.showMessageDialog(rootframe, "La date de départ n'existe pas", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+			return;
 		}
 		rootframe.dispose();
 		ligueedit.GenerateListeEmployee();
@@ -226,6 +237,7 @@ public class ModifierEmploye{
 			messageerreur.showMessageDialog(rootframe, "Des champs obligatoire sont vide", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
 	
 	private void SupprimerEmploye() {
 		employe.remove();

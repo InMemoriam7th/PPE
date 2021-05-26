@@ -34,7 +34,6 @@ public class Main{
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		rootframe.setLocationRelativeTo(null);
 	}
 	
 	private void MainFrame() {

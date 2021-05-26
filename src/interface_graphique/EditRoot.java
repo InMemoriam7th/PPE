@@ -38,7 +38,6 @@ import personnel.GestionPersonnel;
 			rootframe.setSize(300,300);
 			rootframe.setVisible(true);
 			rootframe.getContentPane().add(mainframe);
-			rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		}
 		
 		private void MainFrame() {

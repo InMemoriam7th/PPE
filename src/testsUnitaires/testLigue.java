@@ -1,6 +1,7 @@
 package testsUnitaires;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.Before;
@@ -56,8 +57,13 @@ class testLigue
 		 Ligue ligue1 = gestionPersonnel.addLigue("Billard"); 
 		 Ligue ligue2 = gestionPersonnel.addLigue("Flechettes");
 		 ligue1.remove();
-		 System.out.println(gestionPersonnel.getLigues());
-		 assertEquals("Test de la fonction remove", ligue2 , gestionPersonnel.getLigues().first());
+		 boolean result = false;
+		 for(Ligue ligue : gestionPersonnel.getLigues()) {
+			 if(ligue == ligue1) {
+				 result = true;
+			 }
+		 }
+		 assertFalse("Test de la fonction remove", result);
 		 ligue2.remove();
 	 }
 	

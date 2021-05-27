@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 
 import personnel.Employe;
 import personnel.GestionPersonnel;
@@ -35,7 +36,7 @@ import personnel.GestionPersonnel;
 		}
 		
 		private void RootFrame() {
-			rootframe.setSize(300,300);
+			rootframe.setSize(500,200);
 			rootframe.setVisible(true);
 			rootframe.getContentPane().add(mainframe);
 		}
@@ -55,7 +56,9 @@ import personnel.GestionPersonnel;
 		}
 		private JPanel Titre() {
 			JPanel itemframe = ItemFrame();
-			JLabel titre = new JLabel("Modifier Le compte Root.");
+			JLabel titre = new JLabel("Modifier le compte Administrateur.");
+			titre.setFont(new Font("Verdana", Font.PLAIN, 20));
+			titre.setBorder(new EmptyBorder(10, 0, 10, 0));
 			itemframe.add(titre);
 			return itemframe;
 		}
@@ -64,6 +67,7 @@ import personnel.GestionPersonnel;
 			JPanel itemframe = ItemFrame();
 			JLabel nomlabel = new JLabel("Nom : ");
 			JLabel prenomlabel = new JLabel("Prénom : ");
+			prenomlabel.setBorder(new EmptyBorder(0, 36, 0, 0));
 			nom.setMaximumSize(new Dimension(150, 20));
 			prenom.setMaximumSize(new Dimension(150, 20));
 			nom.setText(employe.getNom());
@@ -79,6 +83,8 @@ import personnel.GestionPersonnel;
 			JPanel itemframe = ItemFrame();
 			JLabel maillabel = new JLabel("Mail : ");
 			JLabel passwordlabel = new JLabel("Mot de passe : ");
+			maillabel.setBorder(new EmptyBorder(0, 0, 0, 3));
+			passwordlabel.setBorder(new EmptyBorder(0, 5, 0, 0));
 			mail.setMaximumSize(new Dimension(150, 20));
 			password.setMaximumSize(new Dimension(150, 20));
 			mail.setText(employe.getMail());
@@ -92,6 +98,7 @@ import personnel.GestionPersonnel;
 		private JPanel ValiderRetour() {
 			JPanel itemframe = ItemFrame();
 			JButton valider = new JButton("valider");
+			valider.setMaximumSize(new Dimension(150, 30));
 			valider.addActionListener(new ActionListener() {
 				
 				@Override
@@ -106,6 +113,7 @@ import personnel.GestionPersonnel;
 				}
 			});
 			itemframe.add(valider);
+			itemframe.setBorder(new EmptyBorder(15, 0, 0, 0));
 			return itemframe;
 		}
 

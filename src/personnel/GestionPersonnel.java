@@ -50,7 +50,7 @@ public class GestionPersonnel implements Serializable
 		ligues = new TreeSet<>();
 		gestionPersonnel = this;
 		try {
-			passerelle.select_root(root);
+			passerelle.SelectRoot(root);
 			
 		} catch (SauvegardeImpossible e) {
 			e.printStackTrace();

@@ -1,6 +1,8 @@
 package interface_graphique;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,10 +35,11 @@ public class AjoutEmploye{
 	}
 	
 	private void Rootframe() {
-		rootframe.setSize(500,400);
+		rootframe.setSize(500,200);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setTitle("Ajouter un employée");
+		rootframe.setLocationRelativeTo(null);
 	}
 	
 	private void Mainframe() {
@@ -55,6 +58,8 @@ public class AjoutEmploye{
 	private JPanel Titre() {
 		JPanel itemframe = ItemFrame();
 		JLabel titre = new JLabel("Ajouter un employée.");
+		titre.setFont(new Font("Verdana", Font.PLAIN, 20));
+		titre.setBorder(new EmptyBorder(10, 0, 10, 0));
 		itemframe.add(titre);
 		return itemframe;
 	}
@@ -63,6 +68,7 @@ public class AjoutEmploye{
 		JPanel itemframe = ItemFrame();
 		JLabel nomlabel = new JLabel("*Nom : ");
 		JLabel prenomlabel = new JLabel("*Prénom : ");
+		prenomlabel.setBorder(new EmptyBorder(0, 31, 0, 0));
 		nom.setMaximumSize(new Dimension(150, 20));
 		prenom.setMaximumSize(new Dimension(150, 20));
 		itemframe.add(nomlabel);
@@ -76,6 +82,7 @@ public class AjoutEmploye{
 		JPanel itemframe = ItemFrame();
 		JLabel maillabel = new JLabel("*Mail : ");
 		JLabel passwordlabel = new JLabel("*Mot de passe : ");
+		maillabel.setBorder(new EmptyBorder(0, 0, 0, 3));
 		mail.setMaximumSize(new Dimension(150, 20));
 		password.setMaximumSize(new Dimension(150, 20));
 		itemframe.add(maillabel);
@@ -109,6 +116,7 @@ public class AjoutEmploye{
 			}
 		});
 		itemframe.add(ajouter);
+		itemframe.setBorder(new EmptyBorder(15, 0, 0, 0));
 		return itemframe;
 	}
 		

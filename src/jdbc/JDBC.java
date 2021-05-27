@@ -38,7 +38,7 @@ public class JDBC implements Passerelle
 	}
 	
 	@Override
-	public void select_root(Employe root) throws SauvegardeImpossible {
+	public void SelectRoot(Employe root) throws SauvegardeImpossible {
 		try 
 		{
 			String requete_select = "select * from employes where admin = 2 ";
@@ -69,7 +69,7 @@ public class JDBC implements Passerelle
 	}
 	
 	
-	public void select_ligue(Ligue ligue){
+	public void SelectLigue(Ligue ligue){
 		LocalDate depart = null;
 		LocalDate arrivee = null;
 		Employe employe = null;
@@ -117,7 +117,7 @@ public class JDBC implements Passerelle
 			while (ligues.next())
 				if(ligues != null) {
 			 	ligue = gestionPersonnel.addLigue(ligues.getInt(1), ligues.getString(2));
-			 	select_ligue(ligue);
+			 	SelectLigue(ligue);
 				}
 		}
 		catch (SQLException e)

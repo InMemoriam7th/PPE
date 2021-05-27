@@ -1,6 +1,7 @@
 package interface_graphique;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import exception.DateException;
 
@@ -29,7 +30,7 @@ public class ModifierEmploye{
 	private JTextField dateDepartmois = new JTextField();
 	private JTextField dateDepartannee = new JTextField();
 	
-	private JTextField dateDepart = new JTextField();
+
 	
 	
 	
@@ -47,6 +48,7 @@ public class ModifierEmploye{
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setTitle("Modifier un employée");
+		rootframe.setLocationRelativeTo(null);
 	}
 	
 	private void MainFrame() {
@@ -70,7 +72,9 @@ public class ModifierEmploye{
 	}
 	private JPanel Titre() {
 		JPanel itemframe = ItemFrame();
-		JLabel titre = new JLabel("Modifier un employe.");
+		JLabel titre = new JLabel("Modifier un employe");
+		titre.setFont(new Font("Verdana", Font.PLAIN, 20));
+		titre.setBorder(new EmptyBorder(10, 0, 10, 0));
 		itemframe.add(titre);
 		return itemframe;
 	}
@@ -79,6 +83,8 @@ public class ModifierEmploye{
 		JPanel itemframe = ItemFrame();
 		JLabel nomlabel = new JLabel("*Nom : ");
 		JLabel prenomlabel = new JLabel("*Prénom : ");
+		prenomlabel.setBorder(new EmptyBorder(0, 33, 0, 0));
+		
 		nom.setMaximumSize(new Dimension(150, 20));
 		prenom.setMaximumSize(new Dimension(150, 20));
 		nom.setText(employe.getNom());
@@ -94,6 +100,8 @@ public class ModifierEmploye{
 		JPanel itemframe = ItemFrame();
 		JLabel maillabel = new JLabel("*Mail : ");
 		JLabel passwordlabel = new JLabel("*Mot de passe : ");
+		maillabel.setBorder(new EmptyBorder(0, 0, 0, 2));
+		passwordlabel.setBorder(new EmptyBorder(0, 2, 0, 0));
 		mail.setMaximumSize(new Dimension(150, 20));
 		password.setMaximumSize(new Dimension(150, 20));
 		mail.setText(employe.getMail());
@@ -109,6 +117,7 @@ public class ModifierEmploye{
 		JPanel itemframe = ItemFrame();
 		JLabel dateArriveelabel = new JLabel("Date d'arrivée : ");
 		itemframe.add(dateArriveelabel);
+		itemframe.setBorder(new EmptyBorder(10, 0, 0, 0));
 		return itemframe;
 	}
 	
@@ -139,6 +148,7 @@ public class ModifierEmploye{
 		JPanel itemframe = ItemFrame();
 		JLabel dateDepartlabel = new JLabel("Date de départ: ");
 		itemframe.add(dateDepartlabel);
+		itemframe.setBorder(new EmptyBorder(10, 0, 0, 0));
 		return itemframe;
 	}
 	
@@ -166,14 +176,17 @@ public class ModifierEmploye{
 	
 	private JPanel Valider() {
 		JPanel itemframe = ItemFrame();
-		JButton modifier = new JButton("modifier");
+		JButton modifier = new JButton("Mettre a jour");
 	    modifier.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				UpdateEmploye();
 			}
 		});
+	    // modifier.setMargin(new Insets(50, 50, 50, 50));
+	    modifier.setMaximumSize(new Dimension(205, 25));
 		itemframe.add(modifier);
+		itemframe.setBorder(new EmptyBorder(20, 0, 10, 0));
 		return itemframe;
 	}
 	
@@ -186,7 +199,9 @@ public class ModifierEmploye{
 				SupprimerEmploye();	
 			}
 		});
+		supprimer.setMaximumSize(new Dimension(205, 25));
 		itemframe.add(supprimer);
+		itemframe.setBorder(new EmptyBorder(0, 0, 10, 0));
 		return itemframe;
 	}
 	
@@ -200,7 +215,9 @@ public class ModifierEmploye{
 				ligueedit.UpdateAdmin();
 			}
 		});
+		buttonsetadmin.setMaximumSize(new Dimension(205, 25));
 		itemframe.add(buttonsetadmin);
+		itemframe.setBorder(new EmptyBorder(0, 0, 10, 0));
 		return itemframe;
 	}
 
@@ -208,32 +225,43 @@ public class ModifierEmploye{
 	private void UpdateEmploye() {
 		JOptionPane messageerreur = new JOptionPane();
 		if(nom.getText() != null && prenom.getText() != null && mail.getText() != null && password.getPassword() != null) {
-		employe.setNom(nom.getText());
-		employe.setPrenom(prenom.getText());
-		employe.setMail(mail.getText());
-		employe.setPassword(String.valueOf(password.getPassword()));
-		try {
-			LocalDate date = LocalDate.of(Integer.parseInt(dateArriveeannee.getText()), Integer.parseInt(dateArriveemois.getText()), Integer.parseInt(dateArriveejour.getText()));
-			employe.setDateArrivee(date);
-		}catch (DateException e) {
-			messageerreur.showMessageDialog(rootframe, e, "Erreur" ,JOptionPane.ERROR_MESSAGE);
-			return;
-		}catch(NumberFormatException e) {
-			messageerreur.showMessageDialog(rootframe, "La date d'arrivée n'existe pas", "Erreur" ,JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		try {
-			LocalDate date = LocalDate.of(Integer.parseInt(dateDepartannee.getText()), Integer.parseInt(dateDepartmois.getText()), Integer.parseInt(dateDepartjour.getText()));
-			employe.setDateDepart(date);
-		} catch (DateException e) {
-			messageerreur.showMessageDialog(rootframe, e, "Erreur" ,JOptionPane.ERROR_MESSAGE);
-			return;
-		} catch (NumberFormatException e) {
-			messageerreur.showMessageDialog(rootframe, "La date de départ n'existe pas", "Erreur" ,JOptionPane.ERROR_MESSAGE);
-			return;
-		}
-		rootframe.dispose();
-		ligueedit.GenerateListeEmployee();
+			
+			if(!dateArriveeannee.getText().isEmpty() && !dateArriveemois.getText().isEmpty() && !dateArriveejour.getText().isEmpty()) {
+				try {
+					
+					LocalDate date = LocalDate.of(Integer.parseInt(dateArriveeannee.getText()), Integer.parseInt(dateArriveemois.getText()), Integer.parseInt(dateArriveejour.getText()));
+					employe.setDateArrivee(date);
+					
+				}catch (DateException e) {
+					messageerreur.showMessageDialog(rootframe, e, "Erreur" ,JOptionPane.ERROR_MESSAGE);
+					return;
+				}catch(NumberFormatException e) {
+					messageerreur.showMessageDialog(rootframe, "La date d'arrivée n'existe pas", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+			}
+		
+			if(!dateDepartannee.getText().isEmpty() && !dateDepartmois.getText().isEmpty() && !dateDepartjour.getText().isEmpty()){
+				try {
+					LocalDate date = LocalDate.of(Integer.parseInt(dateDepartannee.getText()), Integer.parseInt(dateDepartmois.getText()), Integer.parseInt(dateDepartjour.getText()));
+					employe.setDateDepart(date);
+				} catch (DateException e) {
+					messageerreur.showMessageDialog(rootframe, e, "Erreur" ,JOptionPane.ERROR_MESSAGE);
+					return;
+				} catch (NumberFormatException e) {
+					messageerreur.showMessageDialog(rootframe, "La date de départ n'existe pas", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+			}
+		
+			employe.setNom(nom.getText());
+			employe.setPrenom(prenom.getText());
+			employe.setMail(mail.getText());
+			employe.setPassword(String.valueOf(password.getPassword()));
+			
+			rootframe.dispose();
+			ligueedit.GenerateListeEmployee();
+			
 		}else {
 			messageerreur.showMessageDialog(rootframe, "Des champs obligatoire sont vide", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 		}

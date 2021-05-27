@@ -37,6 +37,7 @@ public class Login{
 	private void RootFrame() {
 		rootframe.setSize(300,300);
 		rootframe.setVisible(true);
+		rootframe.setResizable(false);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		rootframe.setLocationRelativeTo(null);
@@ -97,6 +98,7 @@ public class Login{
 			}
 		});
 		item_frame.add(valider);
+		item_frame.setBorder(new EmptyBorder(15, 0, 0, 0));
 		return item_frame;
 	}
 	 

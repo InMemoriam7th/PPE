@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 import personnel.Employe;
 import personnel.GestionPersonnel;
@@ -30,8 +31,9 @@ public class Main{
 	}
 	
 	private void RootFrame() {
-		rootframe.setSize(400,200);
+		rootframe.setSize(400,220);
 		rootframe.setVisible(true);
+		rootframe.setResizable(false);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		rootframe.setTitle("Gestion Des Ligues");
@@ -62,6 +64,7 @@ public class Main{
 	private JPanel Message() {
 		JPanel itemframe = ItemFrame();
 		itemframe.add(new JLabel("Bienvenue dans votre espace " + employe.getNom()));
+		itemframe.setBorder(new EmptyBorder(10, 0, 10, 0));
 		return itemframe;
 	}
 	

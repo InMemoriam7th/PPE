@@ -94,6 +94,7 @@ public class LigueEdit{
 		JLabel titleligue = new JLabel("Éditer Ligue");
 		titleligue.setFont(new Font("Verdana", Font.PLAIN, 20));
 		itemframe.add(titleligue);
+		itemframe.setBorder(new EmptyBorder(10, 0, 10, 0));
 		return itemframe;
 	}
 	
@@ -101,8 +102,10 @@ public class LigueEdit{
 		JPanel itemframe = ItemFrameLigue();
 		JLabel nomligue = new JLabel("Nom de la ligue : ");
 		JButton buttonUpdateNomLigue = new JButton("Changer");
-		if(!(employe.estRoot() || employe.estAdmin(ligue)))
+		if(!(employe.estRoot() || employe.estAdmin(ligue))) {
 			buttonUpdateNomLigue.setEnabled(false);
+			nomTextLigue.setEditable(false);
+		}
 		nomTextLigue.setText(ligue.getNom());
 		nomTextLigue.setMaximumSize(new Dimension(150, 20));
 		buttonUpdateNomLigue.addActionListener(new ActionListener() {
@@ -116,6 +119,7 @@ public class LigueEdit{
 		itemframe.add(nomligue);
 		itemframe.add(nomTextLigue);
 		itemframe.add(buttonUpdateNomLigue);
+		itemframe.setBorder(new EmptyBorder(10, 0, 10, 0));
 		return itemframe;
 	}
 	
@@ -176,7 +180,7 @@ public class LigueEdit{
 	
 	private JPanel TitleEmployee() {
 		JPanel itemframe = ItemFrameEmployee();
-		JLabel title_employee = new JLabel("Employee");
+		JLabel title_employee = new JLabel("Employée");
 		title_employee.setFont(new Font("Verdana", Font.PLAIN, 20));
 		itemframe.setBorder(new EmptyBorder(10, 0, 0, 0));
 		itemframe.add(title_employee);

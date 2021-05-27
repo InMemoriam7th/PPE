@@ -40,6 +40,8 @@ import personnel.GestionPersonnel;
 			rootframe.setVisible(true);
 			rootframe.getContentPane().add(mainframe);
 			rootframe.setTitle("Edition du compte Administrateur");
+			rootframe.setLocationRelativeTo(null);
+			rootframe.setResizable(false);
 		}
 		
 		private void MainFrame() {
@@ -57,7 +59,7 @@ import personnel.GestionPersonnel;
 		}
 		private JPanel Titre() {
 			JPanel itemframe = ItemFrame();
-			JLabel titre = new JLabel("Modifier le compte Administrateur.");
+			JLabel titre = new JLabel("Modifier le compte Administrateur");
 			titre.setFont(new Font("Verdana", Font.PLAIN, 20));
 			titre.setBorder(new EmptyBorder(10, 0, 10, 0));
 			itemframe.add(titre);

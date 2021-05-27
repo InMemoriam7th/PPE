@@ -39,6 +39,7 @@ import personnel.GestionPersonnel;
 			rootframe.setSize(500,200);
 			rootframe.setVisible(true);
 			rootframe.getContentPane().add(mainframe);
+			rootframe.setTitle("Edition du compte Administrateur");
 		}
 		
 		private void MainFrame() {
@@ -97,7 +98,7 @@ import personnel.GestionPersonnel;
 		}
 		private JPanel ValiderRetour() {
 			JPanel itemframe = ItemFrame();
-			JButton valider = new JButton("valider");
+			JButton valider = new JButton("Valider");
 			valider.setMaximumSize(new Dimension(150, 30));
 			valider.addActionListener(new ActionListener() {
 				

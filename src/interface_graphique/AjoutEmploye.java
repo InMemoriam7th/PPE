@@ -38,7 +38,7 @@ public class AjoutEmploye{
 		rootframe.setSize(500,200);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
-		rootframe.setTitle("Ajouter un employée");
+		rootframe.setTitle("Ajouter un employé");
 		rootframe.setLocationRelativeTo(null);
 	}
 	
@@ -57,7 +57,7 @@ public class AjoutEmploye{
 	}
 	private JPanel Titre() {
 		JPanel itemframe = ItemFrame();
-		JLabel titre = new JLabel("Ajouter un employée.");
+		JLabel titre = new JLabel("Ajouter un employé");
 		titre.setFont(new Font("Verdana", Font.PLAIN, 20));
 		titre.setBorder(new EmptyBorder(10, 0, 10, 0));
 		itemframe.add(titre);

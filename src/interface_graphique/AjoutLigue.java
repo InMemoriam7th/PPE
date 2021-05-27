@@ -1,6 +1,7 @@
 package interface_graphique;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 import personnel.Employe;
 import personnel.GestionPersonnel;
@@ -20,7 +21,7 @@ public class AjoutLigue{
 	private JFrame rootframe = new JFrame();
 	private JPanel mainframe = new JPanel();
 	private JTextField ligue = new JTextField();
-	private JButton valider = new JButton("valider");
+	private JButton valider = new JButton("Valider");
 	
 	public AjoutLigue(GestionPersonnel gestionPersonnel, DisplayLigue displayLigue) {
 		this.displayLigue = displayLigue;
@@ -30,11 +31,12 @@ public class AjoutLigue{
 	}
 
 	private void RootFrame() {
-		rootframe.setSize(300,150);
+		rootframe.setSize(320,150);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setLocationRelativeTo(null);
 		rootframe.setTitle("Ajouter une ligue");
+		rootframe.setResizable(false);
 	}
 	
 	private void MainFrame() {
@@ -51,6 +53,8 @@ public class AjoutLigue{
 	private JPanel titre() {
 		JPanel itemframe = ItemFrame();
 		JLabel titre = new JLabel("Ajouter une ligue.");
+		titre.setFont(new Font("Verdana", Font.PLAIN, 18));
+		titre.setBorder(new EmptyBorder(10, 0, 10, 0));
 		itemframe.add(titre);
 		return itemframe;
 	}
@@ -75,6 +79,7 @@ public class AjoutLigue{
 			}
 		});
 		itemframe.add(valider);
+		itemframe.setBorder(new EmptyBorder(10, 0, 10, 0));
 		return itemframe;
 	}
 

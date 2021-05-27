@@ -90,7 +90,7 @@ public class Login{
 	
 	private JPanel valider() {
 		JPanel item_frame = ItemFrame();
-		JButton valider = new JButton("Valider");
+		JButton valider = new JButton("Se connecter");
 		valider.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -123,7 +123,7 @@ public class Login{
 			  rootframe.dispose();
 			  new Main(gestionPersonnel, employe);
 		  }else {
-			  message_erreur.showMessageDialog(rootframe, "Email ou mot de passe incorrecte", "Erreur" ,JOptionPane.ERROR_MESSAGE);
+			  message_erreur.showMessageDialog(rootframe, "Utilisateur/Email ou Mot de passe incorrect", "Erreur" ,JOptionPane.ERROR_MESSAGE);
 		  }
 	 }
 	

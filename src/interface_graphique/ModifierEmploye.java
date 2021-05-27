@@ -29,8 +29,8 @@ public class ModifierEmploye{
 	private JTextField dateDepartjour = new JTextField();
 	private JTextField dateDepartmois = new JTextField();
 	private JTextField dateDepartannee = new JTextField();
+	private JButton buttonsetadmin = new JButton("Définir comme Administrateur");
 	
-
 	
 	
 	
@@ -47,7 +47,7 @@ public class ModifierEmploye{
 		rootframe.setSize(500,400);
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
-		rootframe.setTitle("Modifier un employée");
+		rootframe.setTitle("Modifier un employé");
 		rootframe.setLocationRelativeTo(null);
 	}
 	
@@ -72,7 +72,7 @@ public class ModifierEmploye{
 	}
 	private JPanel Titre() {
 		JPanel itemframe = ItemFrame();
-		JLabel titre = new JLabel("Modifier un employe");
+		JLabel titre = new JLabel("Modifier un employé");
 		titre.setFont(new Font("Verdana", Font.PLAIN, 20));
 		titre.setBorder(new EmptyBorder(10, 0, 10, 0));
 		itemframe.add(titre);
@@ -207,12 +207,13 @@ public class ModifierEmploye{
 	
 	private JPanel SetAdministrateur() {
 		JPanel itemframe = ItemFrame();
-		JButton buttonsetadmin = new JButton("Définir comme Administrateur");
+		ButtonAdministrateurEnabled();
 		buttonsetadmin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ligue.setAdministrateur(employe);
 				ligueedit.UpdateAdmin();
+				ButtonAdministrateurEnabled();
 			}
 		});
 		buttonsetadmin.setMaximumSize(new Dimension(205, 25));
@@ -220,7 +221,11 @@ public class ModifierEmploye{
 		itemframe.setBorder(new EmptyBorder(0, 0, 10, 0));
 		return itemframe;
 	}
-
+	
+	private void ButtonAdministrateurEnabled() {
+		if(employe.estAdmin(ligue))
+			buttonsetadmin.setEnabled(false);
+	}
 	
 	private void UpdateEmploye() {
 		JOptionPane messageerreur = new JOptionPane();

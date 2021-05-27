@@ -39,10 +39,12 @@ public class LigueEdit{
 	private JPanel editemploye = new JPanel();
 	
 	/* Ligue */
+	JLabel titleligue = new JLabel();
 	private JTextField nomTextLigue = new JTextField();
 	private JLabel labeladministrateur = new JLabel();
 	
 	/* Employee */
+	JLabel titleemployee = new JLabel();
 	private DefaultListModel listModel = new DefaultListModel();
 	private JList list = new JList(listModel);
 	
@@ -56,6 +58,7 @@ public class LigueEdit{
 		this.displayLigue = displayLigue;
 		TabbedFrame();
 		RootFrame();
+		UpdateTitre();
 	}
 	
 	private void RootFrame() {
@@ -91,7 +94,6 @@ public class LigueEdit{
 
 	private JPanel TitleLigue() {
 		JPanel itemframe = ItemFrameLigue();
-		JLabel titleligue = new JLabel("Éditer Ligue");
 		titleligue.setFont(new Font("Verdana", Font.PLAIN, 20));
 		itemframe.add(titleligue);
 		itemframe.setBorder(new EmptyBorder(10, 0, 10, 0));
@@ -180,10 +182,9 @@ public class LigueEdit{
 	
 	private JPanel TitleEmployee() {
 		JPanel itemframe = ItemFrameEmployee();
-		JLabel title_employee = new JLabel("Employée");
-		title_employee.setFont(new Font("Verdana", Font.PLAIN, 20));
+		titleemployee.setFont(new Font("Verdana", Font.PLAIN, 20));
 		itemframe.setBorder(new EmptyBorder(10, 0, 0, 0));
-		itemframe.add(title_employee);
+		itemframe.add(titleemployee);
 		return itemframe;
 	}
 	
@@ -215,7 +216,7 @@ public class LigueEdit{
 	}
 	private JPanel ButtonAddEmployee() {
 		JPanel itemframe = ItemFrameEmployee();
-		JButton buttonajouteremployee = new JButton("Ajouter un employee");
+		JButton buttonajouteremployee = new JButton("Ajouter un employé");
 		if(!(employe.estRoot() || employe.estAdmin(ligue)))
 			buttonajouteremployee.setEnabled(false);
 		buttonajouteremployee.addActionListener(new ActionListener() {
@@ -229,7 +230,10 @@ public class LigueEdit{
 		return itemframe;
 	}
 	
-	
+	private void UpdateTitre() {
+		titleligue.setText("Éditer la ligue " + ligue.getNom());
+		titleemployee.setText("Employé de la ligue " + ligue.getNom());
+	}
 	
 	/* Ligue */
 	
@@ -237,6 +241,7 @@ public class LigueEdit{
 		ligue.setNom(nomTextLigue.getText());
 		rootframe.setTitle(nomTextLigue.getText());
 		displayLigue.GenerateListe();
+		UpdateTitre();
 	}
 	
 	

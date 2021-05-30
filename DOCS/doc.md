@@ -38,3 +38,10 @@ Depuis la page principale, selectionnez "Gérer les ligues", puis "ajouter une l
 
 Depuis la page "Gestion des ligues", sélectionnez la ligue a modifier ou a supprimer, et sur la page suivante vous pouvez soit modifier le nom de la ligue ou la supprimer.  
 
+### **Ajouter un employé**  
+
+Depuis la page "Gestion des ligues", sélectionnez la ligue où l'employé doit être ajouté, et sur la page suivante, sélectionnez "éditer employés", puis "Ajouter un employé", renseignez les informations de l'employé pour terminer.  
+
+### **Modifier ou supprimer un employé**
+
+Depuis la page "Gestion des ligues", sélectionnez la ligue où se trouve l'employé qui doit être modifier ou supprimer, et sur la page suivante, sélectionnez "éditer employés", puis l'employé en question, sélectionnez "Modifier", sur la page suivante vous pouvez modifier les information de l'employé ou le supprimer.  

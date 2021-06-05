@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="366" height="188" view_box="0 0 366 188"
+xmlns="http://www.w3.org/2000/svg"
+xmlns:link="http://www.w3.org/1999/xlink">\n\n<desc>Généré par Mocodo 2.3.7 le Sat, 05 Jun 2021 07:44:37</desc>
+
+<rect id="frame" x="0" y="0" width="366" height="188" fill="#ffffbf" stroke="none" stroke-width="0"/>
+
+<!-- Association FAIT PARTIE DE -->
+<line x1="58" y1="94" x2="195" y2="94" stroke="#74add1" stroke-width="2"/>
+<text x="112" y="111.0" fill="#d73027" font-family="Verdana" font-size="12">0,1</text>
+<line x1="320" y1="94" x2="195" y2="94" stroke="#74add1" stroke-width="2"/>
+<text x="256" y="111.0" fill="#d73027" font-family="Verdana" font-size="12">0,N</text>
+<g id="association-FAIT PARTIE DE">
+	<path d="M 237 69 a 14 14 90 0 1 14 14 V 94 h -112 V 83 a 14 14 90 0 1 14 -14" fill="#abd9e9" stroke="#abd9e9" stroke-width="0"/>
+	<path d="M 251 94.0 v 11 a 14 14 90 0 1 -14 14 H 153 a 14 14 90 0 1 -14 -14 V 94.0 H 112" fill="#e0f3f8" stroke="#e0f3f8" stroke-width="0"/>
+	<rect x="139" y="69" width="112" height="50" fill="none" rx="14" stroke="#74add1" stroke-width="2"/>
+	<line x1="139" y1="94" x2="251" y2="94" stroke="#74add1" stroke-width="1"/>
+	<text x="146" y="86.7" fill="#000000" font-family="Verdana" font-size="12">FAIT PARTIE DE</text>
+</g>
+
+<!-- Entity EMPLOYES -->
+<g id="entity-EMPLOYES">
+	<g id="frame-EMPLOYES">
+		<rect x="9" y="9" width="98" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="9" y="34.0" width="98" height="145" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+		<rect x="9" y="9" width="98" height="170" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="9" y1="34" x2="107" y2="34" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="25" y="26.7" fill="#000000" font-family="Verdana" font-size="12">EMPLOYES</text>
+	<text x="14" y="51.7" fill="#000000" font-family="Verdana" font-size="12">ID_employe</text>
+	<line x1="14" y1="54" x2="88" y2="54" stroke="#000000" stroke-width="1"/>
+	<text x="14" y="68.7" fill="#000000" font-family="Verdana" font-size="12">NOM</text>
+	<text x="14" y="85.7" fill="#000000" font-family="Verdana" font-size="12">PRENOM</text>
+	<text x="14" y="102.8" fill="#000000" font-family="Verdana" font-size="12">MAIL</text>
+	<text x="14" y="119.8" fill="#000000" font-family="Verdana" font-size="12">PASSWORD</text>
+	<text x="14" y="136.8" fill="#000000" font-family="Verdana" font-size="12">DATEDEPART</text>
+	<text x="14" y="153.8" fill="#000000" font-family="Verdana" font-size="12">DATEARRIVEE</text>
+	<text x="14" y="170.8" fill="#000000" font-family="Verdana" font-size="12">ADMIN</text>
+</g>
+
+<!-- Entity LIGUE -->
+<g id="entity-LIGUE">
+	<g id="frame-LIGUE">
+		<rect x="283" y="60" width="74" height="25" fill="#fdae61" stroke="#fdae61" stroke-width="0"/>
+		<rect x="283" y="85.0" width="74" height="43" fill="#fee090" stroke="#fee090" stroke-width="0"/>
+		<rect x="283" y="60" width="74" height="68" fill="none" stroke="#f46d43" stroke-width="2"/>
+		<line x1="283" y1="85" x2="357" y2="85" stroke="#f46d43" stroke-width="1"/>
+	</g>
+	<text x="301" y="77.7" fill="#000000" font-family="Verdana" font-size="12">LIGUE</text>
+	<text x="288" y="102.8" fill="#000000" font-family="Verdana" font-size="12">ID_ligue</text>
+	<line x1="288" y1="105" x2="340" y2="105" stroke="#000000" stroke-width="1"/>
+	<text x="288" y="119.8" fill="#000000" font-family="Verdana" font-size="12">nom_ligue</text>
+</g>
+</svg>

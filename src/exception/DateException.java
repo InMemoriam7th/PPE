@@ -1,5 +1,9 @@
 package exception;
 
+/**
+ * Exception levée si la date est impossible
+ */
+
 public class DateException extends Exception{
 
 	private static final long serialVersionUID = -4192440219550042398L;

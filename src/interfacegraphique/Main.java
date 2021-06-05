@@ -1,4 +1,4 @@
-package interface_graphique;
+package interfacegraphique;
 
 import java.awt.Dimension;
 import java.awt.Font;

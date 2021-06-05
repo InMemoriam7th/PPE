@@ -4,7 +4,8 @@
 <ul>
     <li><a href="#sommaire">Sommaire</a></li>
     <li><a href="#installation">Installation</a></li>
-    <li><a href="#manuel">Manuel d'utilisation</a></li>
+    <li><a href="#mode-operatoire">Mode Operatoire</a></li>
+    <li><a href="#document-technique">Document Technique</a></li>
 </ul>
 
 ## Installation
@@ -22,9 +23,9 @@ Pour finir, il va falloir installer les dépendances Maven:<br> Depuis Eclipse -
   
 Une fois que tout est fait, votre application est prête a l'emploi.
 
-## Manuel d'utilisation
+## Mode Operatoire
 
-D'abord connectez vous à l'application, les identifiants sont:  
+D'abord connectez vous à l'application, les identifiants par default sont:  
 **root** pour l'identifiant  
 **toor** pour le mot de passe  
 
@@ -45,3 +46,13 @@ Depuis la page "Gestion des ligues", sélectionnez la ligue où l'employé doit 
 ### **Modifier ou supprimer un employé**
 
 Depuis la page "Gestion des ligues", sélectionnez la ligue où se trouve l'employé qui doit être modifier ou supprimer, et sur la page suivante, sélectionnez "éditer employés", puis l'employé en question, sélectionnez "Modifier", sur la page suivante vous pouvez modifier les information de l'employé ou le supprimer.  
+
+## DocumentTechnique
+
+### Schéma des différentes couches
+
+![couche]https://raw.githubusercontent.com/InMemoriam7th/PPE-Groupe-1/main/DOCS/img/couche.svg
+
+### Schéma relationnel de la base de données
+
+![BDD]https://raw.githubusercontent.com/InMemoriam7th/PPE-Groupe-1/main/DOCS/img/BDD.svg

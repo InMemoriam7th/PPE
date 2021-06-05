@@ -1,7 +1,7 @@
 package personnel;
 
 /**
- * LevÃ©e si un administrateur tente d'effectuer une opÃ©ration sur une 
+ * Exception levée si un administrateur tente d'effectuer une opération sur une 
  * autre ligue que la sienne.
  */
 

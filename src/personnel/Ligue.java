@@ -121,13 +121,13 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	}
 
 	/**
-	 * Ajoute un employÃ© dans la ligue. Cette mÃ©thode 
-	 * est le seul moyen de crÃ©er un employÃ©.
-	 * @param nom le nom de l'employÃ©.
-	 * @param prenom le prÃ©nom de l'employÃ©.
-	 * @param mail l'adresse mail de l'employÃ©.
-	 * @param password le password de l'employÃ©.
-	 * @return l'employÃ© crÃ©Ã©. 
+	 * Ajoute un employé dans la ligue. Cette méthode 
+	 * est le seul moyen de créer un employÃ©.
+	 * @param nom le nom de l'employé.
+	 * @param prenom le prénom de l'employé.
+	 * @param mail l'adresse mail de l'employé.
+	 * @param password le password de l'employé.
+	 * @return l'employé créé. 
 	 */
 
 	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate date_depart, LocalDate date_arrivee) throws SauvegardeImpossible

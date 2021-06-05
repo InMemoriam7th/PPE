@@ -1,4 +1,4 @@
-package interface_graphique;
+package interfacegraphique;
 
 import java.awt.Component;
 import java.awt.Dimension;
@@ -10,9 +10,10 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import interfacegraphique.*;
+
 import java.awt.event.*;
 
-import interface_graphique.*;
 import personnel.Employe;
 import personnel.GestionPersonnel;
 

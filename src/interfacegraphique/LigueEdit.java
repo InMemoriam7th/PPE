@@ -1,4 +1,4 @@
-package interface_graphique;
+package interfacegraphique;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;

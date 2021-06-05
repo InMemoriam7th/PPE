@@ -1,7 +1,7 @@
 package personnel;
 
 /**
- * Exception levÃ©e lorsqu'il est impossible de sauvegarder le gestionnaire.
+ * Exception levée lorsqu'il est impossible de sauvegarder le gestionnaire.
  */
 
 public class SauvegardeImpossible extends Exception

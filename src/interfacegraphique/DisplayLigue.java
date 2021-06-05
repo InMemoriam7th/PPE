@@ -1,4 +1,4 @@
-package interface_graphique;
+package interfacegraphique;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -37,7 +37,7 @@ public class DisplayLigue{
 		rootframe.setVisible(true);
 		rootframe.getContentPane().add(mainframe);
 		rootframe.setLocationRelativeTo(null);
-		rootframe.setTitle("Ligues");
+		rootframe.setTitle("Gerer les ligues");
 	}
 	
 	private void MainFrame() {

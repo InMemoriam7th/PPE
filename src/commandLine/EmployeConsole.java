@@ -12,6 +12,10 @@ import commandLineMenus.Option;
 import exception.DateException;
 import personnel.Employe;
 
+/**
+ * Menu d'édition en ligne de commande des employées d'une ligue 
+ */
+
 public class EmployeConsole 
 {
 	private Option afficher(final Employe employe)

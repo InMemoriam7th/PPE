@@ -1,4 +1,7 @@
-# PPE-Groupe1
+# PPE - Application pour gérer les employés des ligues
+
+![documentation](./DOCS/img/doc.svg) [Documentation](https://github.com/InMemoriam7th/PPE-Groupe-1/blob/main/DOCS/doc.md#document-technique)
+
 ## 1. Présentation
 
 Un des responsables de la M2L, utilise une application pour gérer les employés des ligues. L’application est mise à votre disposition par le biais des ressources suivantes :

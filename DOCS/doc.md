@@ -14,7 +14,7 @@ Pour installer l'application de gestion des ligues et des utilisateur.
 il va vous falloir cliquer [ici](https://github.com/InMemoriam7th/PPE-Groupe-1) pour récuperer l'application.  
 
 Une fois l'application mise en place il va falloir configurer la base de données.  
-Le script de création est fourni avec l'application, il est dans le fichier **Script BDD.txt**.  
+Le script de création est fourni avec l'application, il est dans le fichier [Script BDD.sql](https://github.com/InMemoriam7th/PPE-Groupe-1/blob/main/Script%20BDD.sql).  
 
 Ensuite il va falloir configurer l'application avec les parametres de la base de données créé.  
 Copiez le fichier **CredentialsExample** et renommez le **Credentials**, ensuite configurez les acces de la base dedans.  

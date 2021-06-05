@@ -44,11 +44,13 @@ Depuis la page principale, selectionnez "Gérer les ligues", puis "ajouter une l
 ### **Modifier ou supprimer une ligue**
 
 Depuis la page "Gestion des ligues", sélectionnez la ligue a modifier ou a supprimer, et sur la page suivante vous pouvez soit modifier le nom de la ligue ou la supprimer.  
+
 ![Modifier ou supprimer une ligue](https://raw.githubusercontent.com/InMemoriam7th/PPE-Groupe-1/main/DOCS/img/edit_ligue.jpg)
 
 ### **Ajouter un employé**  
 
-Depuis la page "Gestion des ligues", sélectionnez la ligue où l'employé doit être ajouté, et sur la page suivante, sélectionnez "éditer employés", puis "Ajouter un employé", renseignez les informations de l'employé pour terminer.  
+Depuis la page "Gestion des ligues", sélectionnez la ligue où l'employé doit être ajouté, et sur la page suivante, sélectionnez "éditer employés", puis "Ajouter un employé", renseignez les informations de l'employé pour terminer.
+
 ![Ajouter un employé](https://raw.githubusercontent.com/InMemoriam7th/PPE-Groupe-1/main/DOCS/img/edit_ligue_employee.jpg)
 
 ### **Modifier ou supprimer un employé**
@@ -57,7 +59,7 @@ Depuis la page "Gestion des ligues", sélectionnez la ligue où se trouve l'empl
 
 ![Ajouter un employé](https://raw.githubusercontent.com/InMemoriam7th/PPE-Groupe-1/main/DOCS/img/modifier_employe.jpg)
 
-## DocumentTechnique
+## Document Technique
 
 ### Schéma des différentes couches
 

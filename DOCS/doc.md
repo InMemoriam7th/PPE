@@ -11,15 +11,16 @@
 ## Installation
 
 Pour installer l'application de gestion des ligues et des utilisateur.  
-il va vous falloir cliquer [ici](https://github.com/InMemoriam7th/PPE-Groupe-1) pour récuperer l'application.  
+il va vous falloir [récuperer l'application](https://codeload.github.com/InMemoriam7th/PPE-Groupe-1/zip/refs/heads/main). 
 
 Une fois l'application mise en place il va falloir configurer la base de données.  
 Le script de création est fourni avec l'application, il est dans le fichier [Script BDD.sql](https://github.com/InMemoriam7th/PPE-Groupe-1/blob/main/Script%20BDD.sql).  
 
 Ensuite il va falloir configurer l'application avec les parametres de la base de données créé.  
-Copiez le fichier **CredentialsExample** et renommez le **Credentials**, ensuite configurez les acces de la base dedans.  
+Copiez le fichier **CredentialsExample** et renommez le **Credentials**, ensuite configurez les acces de la base de données dedans.  
 
-Pour finir, il va falloir installer les dépendances Maven:<br> Depuis Eclipse ->selectionner l'aplication -> run as -> Maven build -> Maven install.  
+Pour finir, il va falloir installer les dépendances Maven:<br> Depuis Eclipse -> selectionner l'aplication -> run as -> Maven build.<br>
+Puis faite "Maven install".
   
 Une fois que tout est fait, votre application est prête a l'emploi.
 
@@ -63,7 +64,7 @@ Depuis la page "Gestion des ligues", sélectionnez la ligue où se trouve l'empl
 
 ### Schéma des différentes couches
 
-![couche](https://raw.githubusercontent.com/InMemoriam7th/PPE-Groupe-1/main/DOCS/img/couche.svg)
+![Schéma des couches](https://raw.githubusercontent.com/InMemoriam7th/PPE-Groupe-1/main/DOCS/img/couche.svg)
 
 ### Schéma relationnel de la base de données
 

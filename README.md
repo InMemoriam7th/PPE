@@ -1,6 +1,6 @@
 # PPE - Application pour gérer les employés des ligues
 
-![documentation](./DOCS/img/doc.svg) [Documentation](https://github.com/InMemoriam7th/PPE-Groupe-1/blob/main/DOCS/doc.md#document-technique)
+![documentation](./DOCS/img/doc.svg) [Documentation](https://github.com/InMemoriam7th/PPE-Groupe-1/blob/main/DOCS/doc.md)
 
 ## 1. Présentation
 
